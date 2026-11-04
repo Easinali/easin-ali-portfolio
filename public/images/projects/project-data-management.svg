@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101827" />
+      <stop offset="100%" stop-color="#172338" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg5)"/>
+  
+  <!-- Header Bar -->
+  <rect x="30" y="25" width="740" height="50" rx="8" fill="#1e293b" stroke="#283955" stroke-width="1"/>
+  <rect x="50" y="38" width="24" height="24" rx="4" fill="#3B82F6"/>
+  <text x="57" y="55" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">X</text>
+  <text x="85" y="55" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="14" font-weight="600">Automated Excel-Based Operational Records &amp; Data System</text>
+  <rect x="625" y="37" width="125" height="26" rx="4" fill="#3B82F6" opacity="0.25"/>
+  <text x="687" y="54" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">ZERO DATA ERROR</text>
+
+  <!-- Metric Cards -->
+  <rect x="30" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">TOTAL RECORDS MAINTAINED</text>
+  <text x="50" y="142" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">120,000+ Rows</text>
+
+  <rect x="285" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="305" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">DATA VALIDATION ACCURACY</text>
+  <text x="305" y="142" fill="#10b981" font-family="'Inter', sans-serif" font-size="20" font-weight="700">99.98%</text>
+
+  <rect x="540" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="560" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">QUERY LOOKUP LATENCY</text>
+  <text x="560" y="142" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">&lt; 0.2 Sec</text>
+
+  <!-- Split View: Data Hygiene & Master Registry -->
+  <rect x="30" y="180" width="420" height="285" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="210" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Standardized Data Validation Protocols</text>
+  
+  <rect x="50" y="230" width="380" height="48" rx="6" fill="#1e293b"/>
+  <circle cx="70" cy="254" r="10" fill="#10b981" opacity="0.3"/>
+  <text x="70" y="258" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="700" text-anchor="middle">✓</text>
+  <text x="95" y="248" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">Restricted Dropdown Validation Lists</text>
+  <text x="95" y="266" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">Guarantees zero typo entry across multi-outlet operations</text>
+
+  <rect x="50" y="290" width="380" height="48" rx="6" fill="#1e293b"/>
+  <circle cx="70" cy="314" r="10" fill="#10b981" opacity="0.3"/>
+  <text x="70" y="318" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="700" text-anchor="middle">✓</text>
+  <text x="95" y="308" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">Duplicate Entry Trapping</text>
+  <text x="95" y="326" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">Automated conditional formatting flags duplicate voucher codes</text>
+
+  <rect x="50" y="350" width="380" height="48" rx="6" fill="#1e293b"/>
+  <circle cx="70" cy="374" r="10" fill="#10b981" opacity="0.3"/>
+  <text x="70" y="378" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="700" text-anchor="middle">✓</text>
+  <text x="95" y="368" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">Multi-Condition Lookup Formulas</text>
+  <text x="95" y="386" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">Dynamic INDEX/MATCH and nested XLOOKUP tables</text>
+
+  <rect x="50" y="410" width="380" height="42" rx="6" fill="#20304c"/>
+  <text x="240" y="435" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">Standard Operating Procedure (SOP) Compliant</text>
+
+  <!-- Right Side Schema Visual -->
+  <rect x="465" y="180" width="305" height="285" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="485" y="210" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Relational Excel Model</text>
+  
+  <rect x="485" y="235" width="265" height="60" rx="6" fill="#1e293b" stroke="#3B82F6" stroke-width="1"/>
+  <text x="500" y="258" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Dim_Outlets &amp; Dim_Products</text>
+  <text x="500" y="278" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">Master metadata records &amp; category keys</text>
+
+  <line x1="617" y1="295" x2="617" y2="330" stroke="#3B82F6" stroke-width="2"/>
+
+  <rect x="485" y="330" width="265" height="60" rx="6" fill="#1e293b" stroke="#3B82F6" stroke-width="1"/>
+  <text x="500" y="353" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Fact_DailyOperations</text>
+  <text x="500" y="373" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">Transaction log, reconciliations &amp; vouchers</text>
+
+  <line x1="617" y1="390" x2="617" y2="420" stroke="#3B82F6" stroke-width="2"/>
+
+  <rect x="485" y="420" width="265" height="35" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="617" y="442" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">→ Executive MIS Summary</text>
+</svg>
+

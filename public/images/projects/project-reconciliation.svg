@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101827" />
+      <stop offset="100%" stop-color="#172338" />
+    </linearGradient>
+    <linearGradient id="blueG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#75B8FF" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Header Bar -->
+  <rect x="30" y="25" width="740" height="50" rx="8" fill="#1e293b" stroke="#283955" stroke-width="1"/>
+  <circle cx="55" cy="50" r="6" fill="#ef4444"/>
+  <circle cx="75" cy="50" r="6" fill="#f59e0b"/>
+  <circle cx="95" cy="50" r="6" fill="#10b981"/>
+  <text x="120" y="55" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="14" font-weight="600">Daily Sales &amp; Bank Deposit Reconciliation Matrix</text>
+  <rect x="630" y="37" width="120" height="26" rx="4" fill="#3B82F6" opacity="0.2"/>
+  <text x="690" y="54" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">STATUS: BALANCED</text>
+
+  <!-- Metric Cards -->
+  <rect x="30" y="90" width="230" height="80" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="115" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="500">TOTAL OUTLET SALES</text>
+  <text x="50" y="148" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="22" font-weight="700">৳ 1,485,200</text>
+  <text x="210" y="148" fill="#10b981" font-family="'Inter', sans-serif" font-size="13" font-weight="600">100%</text>
+
+  <rect x="285" y="90" width="230" height="80" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="305" y="115" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="500">BANK DEPOSIT RECORDED</text>
+  <text x="305" y="148" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="22" font-weight="700">৳ 1,485,200</text>
+  <text x="465" y="148" fill="#10b981" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Match</text>
+
+  <rect x="540" y="90" width="230" height="80" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="560" y="115" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="500">DISCREPANCY / VARIANCE</text>
+  <text x="560" y="148" fill="#10b981" font-family="'Inter', sans-serif" font-size="22" font-weight="700">৳ 0.00</text>
+  <text x="720" y="148" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Zero Var</text>
+
+  <!-- Table View Mockup -->
+  <rect x="30" y="190" width="740" height="280" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  
+  <!-- Table Header -->
+  <rect x="30" y="190" width="740" height="38" rx="8" fill="#20304c"/>
+  <text x="50" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">OUTLET CODE</text>
+  <text x="180" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">DATE</text>
+  <text x="290" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">POS SALES</text>
+  <text x="420" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">BANK DEPOSIT</text>
+  <text x="560" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">VARIANCE</text>
+  <text x="690" y="214" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">STATUS</text>
+
+  <!-- Row 1 -->
+  <line x1="30" y1="268" x2="770" y2="268" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="250" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">OUT-DH-01 (Gulshan)</text>
+  <text x="180" y="250" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">2026-11-03</text>
+  <text x="290" y="250" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 320,500</text>
+  <text x="420" y="250" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 320,500</text>
+  <text x="560" y="250" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="600">0.00</text>
+  <rect x="680" y="235" width="70" height="22" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="715" y="250" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">VERIFIED</text>
+
+  <!-- Row 2 -->
+  <line x1="30" y1="318" x2="770" y2="318" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="300" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">OUT-DH-02 (Uttara)</text>
+  <text x="180" y="300" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">2026-11-03</text>
+  <text x="290" y="300" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 245,000</text>
+  <text x="420" y="300" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 245,000</text>
+  <text x="560" y="300" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="600">0.00</text>
+  <rect x="680" y="285" width="70" height="22" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="715" y="300" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">VERIFIED</text>
+
+  <!-- Row 3 -->
+  <line x1="30" y1="368" x2="770" y2="368" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="350" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">OUT-DH-03 (Dhanmondi)</text>
+  <text x="180" y="350" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">2026-11-03</text>
+  <text x="290" y="350" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 410,200</text>
+  <text x="420" y="350" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 410,200</text>
+  <text x="560" y="350" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="600">0.00</text>
+  <rect x="680" y="335" width="70" height="22" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="715" y="350" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">VERIFIED</text>
+
+  <!-- Row 4 -->
+  <line x1="30" y1="418" x2="770" y2="418" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="400" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="500">OUT-CTG-01 (Agrabad)</text>
+  <text x="180" y="400" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">2026-11-03</text>
+  <text x="290" y="400" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 509,500</text>
+  <text x="420" y="400" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="12">৳ 509,500</text>
+  <text x="560" y="400" fill="#10b981" font-family="'Inter', sans-serif" font-size="12" font-weight="600">0.00</text>
+  <rect x="680" y="385" width="70" height="22" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="715" y="400" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">VERIFIED</text>
+</svg>
+

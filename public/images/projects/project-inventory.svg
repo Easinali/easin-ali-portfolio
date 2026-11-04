@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101827" />
+      <stop offset="100%" stop-color="#172338" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg2)"/>
+  
+  <!-- Header Bar -->
+  <rect x="30" y="25" width="740" height="50" rx="8" fill="#1e293b" stroke="#283955" stroke-width="1"/>
+  <circle cx="55" cy="50" r="6" fill="#3B82F6"/>
+  <circle cx="75" cy="50" r="6" fill="#75B8FF"/>
+  <text x="95" y="55" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="14" font-weight="600">Enterprise Inventory Tracking &amp; Stock Aging Dashboard</text>
+  <rect x="630" y="37" width="120" height="26" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="690" y="54" fill="#10b981" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">STOCK OPTIMIZED</text>
+
+  <!-- Metric Cards -->
+  <rect x="30" y="90" width="170" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="45" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">TOTAL SKUs TRACKED</text>
+  <text x="45" y="142" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">1,248 Units</text>
+
+  <rect x="215" y="90" width="175" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="230" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">TOTAL VALUATION</text>
+  <text x="230" y="142" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">৳ 24.8M</text>
+
+  <rect x="405" y="90" width="175" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="420" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">CRITICAL REORDER</text>
+  <text x="420" y="142" fill="#f59e0b" font-family="'Inter', sans-serif" font-size="20" font-weight="700">14 Items</text>
+
+  <rect x="595" y="90" width="175" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="610" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">DEAD / SLOW STOCK</text>
+  <text x="610" y="142" fill="#ef4444" font-family="'Inter', sans-serif" font-size="20" font-weight="700">&lt; 1.8%</text>
+
+  <!-- Stock Aging & Distribution Visuals -->
+  <rect x="30" y="185" width="460" height="280" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="215" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Stock Turnover by Product Category</text>
+  
+  <!-- Bar Chart Items -->
+  <text x="50" y="250" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">Feed &amp; Raw Material</text>
+  <rect x="190" y="238" width="230" height="16" rx="4" fill="#3B82F6"/>
+  <text x="430" y="251" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">82%</text>
+
+  <text x="50" y="295" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">Packaged Products</text>
+  <rect x="190" y="283" width="260" height="16" rx="4" fill="#3B82F6"/>
+  <text x="460" y="296" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">93%</text>
+
+  <text x="50" y="340" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">Frozen &amp; Chilled</text>
+  <rect x="190" y="328" width="200" height="16" rx="4" fill="#3B82F6"/>
+  <text x="400" y="341" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">71%</text>
+
+  <text x="50" y="385" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">Operational Supplies</text>
+  <rect x="190" y="373" width="160" height="16" rx="4" fill="#3B82F6"/>
+  <text x="360" y="386" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">58%</text>
+
+  <text x="50" y="430" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">Packaging Material</text>
+  <rect x="190" y="418" width="240" height="16" rx="4" fill="#3B82F6"/>
+  <text x="440" y="431" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">86%</text>
+
+  <!-- Right Side Donut / Summary -->
+  <rect x="505" y="185" width="265" height="280" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="525" y="215" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Aging Breakdown</text>
+  <circle cx="637" cy="290" r="55" fill="none" stroke="#283955" stroke-width="20"/>
+  <circle cx="637" cy="290" r="55" fill="none" stroke="#3B82F6" stroke-width="20" stroke-dasharray="240 345"/>
+  <circle cx="637" cy="290" r="55" fill="none" stroke="#75B8FF" stroke-width="20" stroke-dasharray="70 345" stroke-dashoffset="-240"/>
+  <text x="637" y="295" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700" text-anchor="middle">ACTIVE</text>
+  <text x="535" y="390" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="11">• 0 - 30 Days: 72%</text>
+  <text x="535" y="412" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="11">• 31 - 60 Days: 21%</text>
+  <text x="535" y="434" fill="#f59e0b" font-family="'Inter', sans-serif" font-size="11">• 60+ Days: 7% (Monitored)</text>
+</svg>
+

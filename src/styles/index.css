@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  }
+
+  body {
+    background-color: #101827;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283955;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+/* Glassmorphism utility */
+.glass-nav {
+  background: rgba(16, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(40, 57, 85, 0.5);
+}
+
+.glass-card {
+  background: #172338;
+  border: 1px solid #283955;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: #3B82F6;
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

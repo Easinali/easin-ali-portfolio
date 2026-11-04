@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101827" />
+      <stop offset="100%" stop-color="#172338" />
+    </linearGradient>
+    <linearGradient id="areaG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  
+  <!-- Header Bar -->
+  <rect x="30" y="25" width="740" height="50" rx="8" fill="#1e293b" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="55" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">EXCEL MIS</text>
+  <text x="135" y="55" fill="#CBD5E1" font-family="'Inter', sans-serif" font-size="14" font-weight="500">Executive Performance &amp; Operations Cockpit</text>
+  <rect x="610" y="37" width="140" height="26" rx="4" fill="#3B82F6" opacity="0.25"/>
+  <text x="680" y="54" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">DYNAMIC SLICERS</text>
+
+  <!-- Metric Cards -->
+  <rect x="30" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">TOTAL REVENUE (MTD)</text>
+  <text x="50" y="142" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">৳ 48.65 Million</text>
+
+  <rect x="285" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="305" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">OPERATIONAL EFFICIENCY</text>
+  <text x="305" y="142" fill="#75B8FF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">96.4%</text>
+
+  <rect x="540" y="90" width="230" height="75" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="560" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">REPORT GENERATION TIME</text>
+  <text x="560" y="142" fill="#10b981" font-family="'Inter', sans-serif" font-size="20" font-weight="700">-65% Reduction</text>
+
+  <!-- Main Chart: Performance Trend -->
+  <rect x="30" y="180" width="480" height="285" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="50" y="210" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Weekly Target vs Actual Performance (Pivot Chart)</text>
+  
+  <!-- Grid Lines -->
+  <line x1="60" y1="240" x2="480" y2="240" stroke="#283955" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="60" y1="290" x2="480" y2="290" stroke="#283955" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="60" y1="340" x2="480" y2="340" stroke="#283955" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="60" y1="390" x2="480" y2="390" stroke="#283955" stroke-width="1"/>
+
+  <!-- Trend Curve & Fill -->
+  <path d="M 70 370 Q 150 310, 220 330 T 360 260 T 470 230 L 470 390 L 70 390 Z" fill="url(#areaG)"/>
+  <path d="M 70 370 Q 150 310, 220 330 T 360 260 T 470 230" fill="none" stroke="#3B82F6" stroke-width="3"/>
+  
+  <circle cx="70" cy="370" r="4" fill="#75B8FF"/>
+  <circle cx="220" cy="330" r="4" fill="#75B8FF"/>
+  <circle cx="360" cy="260" r="4" fill="#75B8FF"/>
+  <circle cx="470" cy="230" r="4" fill="#75B8FF"/>
+  
+  <text x="70" y="415" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">W1</text>
+  <text x="200" y="415" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">W2</text>
+  <text x="340" y="415" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">W3</text>
+  <text x="460" y="415" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11">W4</text>
+
+  <!-- Right Side Interactive Controls & KPIs -->
+  <rect x="525" y="180" width="245" height="285" rx="8" fill="#1a263c" stroke="#283955" stroke-width="1"/>
+  <text x="545" y="210" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Automated Formulas</text>
+  
+  <rect x="545" y="230" width="205" height="42" rx="6" fill="#1e293b"/>
+  <text x="555" y="255" fill="#75B8FF" font-family="monospace" font-size="11">XLOOKUP / INDEX-MATCH</text>
+
+  <rect x="545" y="285" width="205" height="42" rx="6" fill="#1e293b"/>
+  <text x="555" y="310" fill="#75B8FF" font-family="monospace" font-size="11">SUMIFS &amp; COUNTIFS Matrix</text>
+
+  <rect x="545" y="340" width="205" height="42" rx="6" fill="#1e293b"/>
+  <text x="555" y="365" fill="#75B8FF" font-family="monospace" font-size="11">IFERROR &amp; Data Validation</text>
+
+  <rect x="545" y="395" width="205" height="42" rx="6" fill="#1e293b"/>
+  <text x="555" y="420" fill="#75B8FF" font-family="monospace" font-size="11">Dynamic Pivot Refresh</text>
+</svg>
+
