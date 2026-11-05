@@ -128,60 +128,51 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Professional Portrait Frame (5 cols) */}
+          {/* Right Column: Professional Round Portrait Frame (5 cols) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <CardSpotlight
-              maxTilt={3}
-              enableTilt={true}
-              className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[420px] rounded-3xl p-1 bg-gradient-to-b from-electricBlue/50 via-borderNavy to-navyBlue shadow-2xl"
-            >
-              {/* Inner card container */}
-              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-navyBlue flex items-center justify-center group">
-                <img
-                  src={photoError ? profileData.portraitFallback : profileData.portraitPath}
-                  onError={() => setPhotoError(true)}
-                  alt="Easin Ali Professional Portrait"
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
+            <div className="relative">
+              {/* Subtle ambient backglow ring */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-electricBlue/30 via-highlightBlue/20 to-transparent blur-xl pointer-events-none" />
 
-                {/* Bottom floating badge with verified corporate beacon */}
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-darkNavy/90 backdrop-blur-md border border-borderNavy flex items-center justify-between shadow-lg">
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <p className="text-xs font-bold text-white leading-tight">
-                        {language === 'bn' ? profileData.nameBn : profileData.name}
-                      </p>
-                    </div>
-                    <p className="text-[10px] text-highlightBlue font-semibold mt-0.5">
-                      Paragon Group • Assistant Officer
-                    </p>
-                  </div>
-
-                  {/* Photo help trigger button */}
-                  <button
-                    type="button"
-                    onClick={() => setShowPhotoHelp(true)}
-                    className="p-1.5 rounded-lg bg-electricBlue/20 hover:bg-electricBlue text-highlightBlue hover:text-white transition-colors"
-                    title="How to replace with your portrait photo"
-                    aria-label="Help: How to replace portrait photo"
-                  >
-                    <HelpCircle className="w-4 h-4" />
-                  </button>
+              <CardSpotlight
+                maxTilt={3}
+                enableTilt={true}
+                className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-electricBlue via-highlightBlue/50 to-navyBlue shadow-[0_0_40px_rgba(59,130,246,0.35)]"
+              >
+                {/* Inner circular image container */}
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-navyBlue border-2 border-darkNavy flex items-center justify-center group">
+                  <img
+                    src={photoError ? profileData.portraitFallback : profileData.portraitPath}
+                    onError={() => setPhotoError(true)}
+                    alt="Easin Ali Professional Portrait"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 rounded-full"
+                  />
                 </div>
+              </CardSpotlight>
+
+              {/* Decorative accent spark icon */}
+              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 w-9 h-9 rounded-full bg-darkNavy/90 border border-electricBlue flex items-center justify-center text-highlightBlue shadow-glow z-20">
+                <Sparkles className="w-4 h-4" />
               </div>
 
-              {/* Decorative accent ring */}
-              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-2xl bg-electricBlue/20 border border-electricBlue flex items-center justify-center text-highlightBlue shadow-glow">
-                <Sparkles className="w-5 h-5" />
+              {/* Bottom floating badge with verified corporate beacon */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-darkNavy/95 backdrop-blur-md border border-electricBlue/40 shadow-xl flex items-center gap-2.5 z-20 whitespace-nowrap">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-bold text-white">
+                  {language === 'bn' ? profileData.nameBn : profileData.name}
+                </span>
+                <span className="text-secondaryText/40">•</span>
+                <span className="text-[11px] text-highlightBlue font-semibold">
+                  Paragon Group
+                </span>
               </div>
-            </CardSpotlight>
+            </div>
 
             {/* Clickable Hint under portrait */}
             <button
               type="button"
               onClick={() => setShowPhotoHelp(true)}
-              className="mt-4 inline-flex items-center gap-1.5 text-xs text-secondaryText/80 hover:text-highlightBlue underline transition-colors"
+              className="mt-8 inline-flex items-center gap-1.5 text-xs text-secondaryText/80 hover:text-highlightBlue underline transition-colors"
             >
               <HelpCircle className="w-3.5 h-3.5 text-highlightBlue" />
               <span>{t.hero.photoHint}</span>
