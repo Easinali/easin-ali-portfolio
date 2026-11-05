@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
             </div>
           </a>
 
-          {/* Desktop Nav Items with Active Scrollspy Highlighting */}
+          {/* Desktop Nav Items with Active Scrollspy & Animated Underlines */}
           <nav className="hidden xl:flex items-center gap-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
@@ -93,14 +93,21 @@ export const Navbar: React.FC = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-lg transition-all duration-200 ${
+                  className={`relative px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-lg transition-all duration-200 group ${
                     isActive
                       ? 'bg-electricBlue/15 text-highlightBlue border border-electricBlue/30 shadow-sm'
-                      : 'text-secondaryText hover:text-white hover:bg-slate-800/50 border border-transparent'
+                      : 'text-secondaryText hover:text-white hover:bg-slate-800/40 border border-transparent'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {/* Animated Underline */}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute bottom-0 left-2.5 right-2.5 h-[2px] bg-gradient-to-r from-electricBlue to-highlightBlue rounded-full transition-all duration-300 origin-left ${
+                      isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-80'
+                    }`}
+                  />
                 </a>
               );
             })}

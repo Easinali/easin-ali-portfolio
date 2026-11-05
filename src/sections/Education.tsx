@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { educationData } from '../data/educationData';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { GraduationCap, Calendar, BookOpen, Sparkles, Building } from 'lucide-react';
 
 export const Education: React.FC = () => {
@@ -35,9 +36,9 @@ export const Education: React.FC = () => {
             const courses = isBn ? item.coursesBn : item.courses;
 
             return (
-              <div
+              <CardSpotlight
                 key={item.id}
-                className="bg-navyBlue/90 border border-borderNavy hover:border-electricBlue rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-card transition-all duration-300 relative group"
+                className="bg-navyBlue/90 border border-borderNavy hover:border-electricBlue/60 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-card transition-all duration-300 relative group"
               >
                 <div>
                   {/* Top Status & Badge */}
@@ -89,14 +90,14 @@ export const Education: React.FC = () => {
                     {courses.map((course, idx) => (
                       <span
                         key={idx}
-                        className="px-2.5 py-1 rounded-md bg-darkNavy text-[11px] font-medium text-slate-300 border border-borderNavy"
+                        className="px-2.5 py-1 rounded-md bg-darkNavy text-[11px] font-medium text-slate-300 border border-borderNavy hover:border-electricBlue/40 transition-colors"
                       >
                         {course}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </CardSpotlight>
             );
           })}
         </div>

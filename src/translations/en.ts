@@ -136,6 +136,15 @@ export const en = {
     workplaceBadge: "Workplace Operational Project",
     simulationBadge: "Analytical Case Study / Simulation",
     filterAll: "All Projects",
+    livePreview: "Live Preview",
+    previewComingSoon: "Preview Coming Soon",
+    categories: {
+      all: "All Projects",
+      excelMis: "Excel & MIS",
+      inventory: "Inventory",
+      supplyChain: "Supply Chain",
+      dataAnalysis: "Data Analysis"
+    },
     modal: {
       overview: "Project Overview",
       problem: "Operational Challenge / Objective",

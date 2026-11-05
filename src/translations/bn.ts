@@ -136,6 +136,15 @@ export const bn = {
     workplaceBadge: "কর্মক্ষেত্রের অপারেশনাল প্রজেক্ট",
     simulationBadge: "অ্যানালিটিক্যাল কেস স্টাডি / সিমুলেশন",
     filterAll: "সকল প্রজেক্ট",
+    livePreview: "লাইভ প্রিভিউ",
+    previewComingSoon: "প্রিভিউ শীঘ্রই আসছে",
+    categories: {
+      all: "সকল প্রজেক্ট",
+      excelMis: "এক্সেল ও এমআইএস",
+      inventory: "ইনভেন্টরি",
+      supplyChain: "সাপ্লাই চেইন",
+      dataAnalysis: "ডাটা অ্যানালাইসিস"
+    },
     modal: {
       overview: "প্রজেক্টের বিবরণ",
       problem: "অপারেশনাল চ্যালেঞ্জ ও লক্ষ্য",

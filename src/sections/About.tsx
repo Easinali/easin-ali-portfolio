@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { Database, TrendingUp, CheckCircle, GraduationCap, BarChart2, Shield } from 'lucide-react';
 
 export const About: React.FC = () => {
@@ -91,7 +92,7 @@ export const About: React.FC = () => {
 
           {/* Quick Stats Grid (5 cols) */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-            <div className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card">
+            <CardSpotlight className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card hover:border-electricBlue/50 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-electricBlue/10 border border-electricBlue/30 flex items-center justify-center text-highlightBlue mb-4">
                 <TrendingUp className="w-5 h-5" />
               </div>
@@ -103,9 +104,9 @@ export const About: React.FC = () => {
                   {t.about.stats.exp}
                 </p>
               </div>
-            </div>
+            </CardSpotlight>
 
-            <div className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card">
+            <CardSpotlight className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card hover:border-emerald-500/50 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
                 <CheckCircle className="w-5 h-5" />
               </div>
@@ -117,9 +118,9 @@ export const About: React.FC = () => {
                   {t.about.stats.accuracy}
                 </p>
               </div>
-            </div>
+            </CardSpotlight>
 
-            <div className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card">
+            <CardSpotlight className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card hover:border-blue-500/50 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-highlightBlue mb-4">
                 <Database className="w-5 h-5" />
               </div>
@@ -131,9 +132,9 @@ export const About: React.FC = () => {
                   {t.about.stats.reconciled}
                 </p>
               </div>
-            </div>
+            </CardSpotlight>
 
-            <div className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card">
+            <CardSpotlight className="p-5 rounded-2xl bg-darkNavy border border-borderNavy flex flex-col justify-between shadow-card hover:border-purple-500/50 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
                 <BarChart2 className="w-5 h-5" />
               </div>
@@ -145,7 +146,7 @@ export const About: React.FC = () => {
                   {t.about.stats.erp}
                 </p>
               </div>
-            </div>
+            </CardSpotlight>
           </div>
         </div>
       </div>

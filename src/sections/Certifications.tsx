@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { certificationsData } from '../data/certificationsData';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { CheckCircle, FileSpreadsheet, Database, Truck, Briefcase } from 'lucide-react';
 
 export const Certifications: React.FC = () => {
@@ -47,14 +48,14 @@ export const Certifications: React.FC = () => {
             const skills = isBn ? item.skillsLearnedBn : item.skillsLearned;
 
             return (
-              <div
+              <CardSpotlight
                 key={item.id}
-                className="bg-navyBlue/90 border border-borderNavy hover:border-borderNavy/80 rounded-2xl p-6 sm:p-7 shadow-card flex flex-col justify-between transition-all"
+                className="bg-navyBlue/90 border border-borderNavy hover:border-electricBlue/60 rounded-2xl p-6 sm:p-7 shadow-card flex flex-col justify-between transition-all group"
               >
                 <div>
                   {/* Card Header */}
                   <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-darkNavy border border-borderNavy flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-darkNavy border border-borderNavy flex items-center justify-center shrink-0 group-hover:border-electricBlue/40 transition-colors">
                       {getIcon(item.category)}
                     </div>
                     <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
@@ -62,7 +63,7 @@ export const Certifications: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
+                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug group-hover:text-highlightBlue transition-colors">
                     {title}
                   </h3>
 
@@ -83,7 +84,7 @@ export const Certifications: React.FC = () => {
                     {skills.map((skill, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-darkNavy text-[11px] font-medium text-slate-300 border border-borderNavy"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-darkNavy text-[11px] font-medium text-slate-300 border border-borderNavy hover:border-electricBlue/40 transition-colors"
                       >
                         <CheckCircle className="w-3 h-3 text-electricBlue" />
                         <span>{skill}</span>
@@ -91,7 +92,7 @@ export const Certifications: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </CardSpotlight>
             );
           })}
         </div>

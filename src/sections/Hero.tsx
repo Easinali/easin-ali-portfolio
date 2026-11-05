@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
 import { FileDown, ArrowRight, Mail, Linkedin, Sparkles, Building2, HelpCircle, X, Copy, Check, TrendingUp, ShieldCheck, Database, Award } from 'lucide-react';
+import { CardSpotlight } from '../components/CardSpotlight';
 
 export const Hero: React.FC = () => {
   const { t, language } = useLanguage();
@@ -19,15 +20,18 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-electricBlue/10 rounded-full blur-[130px] pointer-events-none" />
+      {/* Subtle Blue Accent Lighting */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] rounded-full blur-[140px] pointer-events-none opacity-40 bg-gradient-to-tr from-electricBlue/20 via-highlightBlue/15 to-transparent"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Headline, Bio & CTAs (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Corporate Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navyBlue/90 border border-borderNavy shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navyBlue/90 border border-borderNavy shadow-sm backdrop-blur-md">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               <Building2 className="w-3.5 h-3.5 text-highlightBlue" />
               <span className="text-xs font-semibold text-slate-200">
@@ -37,7 +41,7 @@ export const Hero: React.FC = () => {
 
             {/* Greeting & Main Headline */}
             <div className="space-y-2">
-              <p className="text-sm md:text-base font-semibold text-highlightBlue tracking-wide uppercase">
+              <p className="text-sm md:text-base font-semibold text-highlightBlue tracking-wider uppercase">
                 {t.hero.greeting}
               </p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
@@ -56,20 +60,25 @@ export const Hero: React.FC = () => {
               {t.hero.supportingText}
             </p>
 
-            {/* CTAs & Social Links */}
+            {/* CTAs with Premium Hover & Shimmer Interactions */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-sm shadow-glow transition-all duration-200 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-sm shadow-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 group relative overflow-hidden"
               >
+                {/* Subtle Shimmer highlight on hover */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none"
+                />
                 <span>{t.hero.exploreProjects}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </a>
 
               <a
                 href={profileData.resumePdfPath}
                 download="Easin_Ali_Resume_CV.pdf"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navyBlue hover:bg-slate-800 text-white border border-borderNavy font-semibold text-sm transition-all duration-200 hover:border-electricBlue/50"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navyBlue hover:bg-slate-800 text-white border border-borderNavy hover:border-electricBlue/60 font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-sm"
               >
                 <FileDown className="w-4 h-4 text-highlightBlue" />
                 <span>{t.hero.downloadCv}</span>
@@ -86,7 +95,7 @@ export const Hero: React.FC = () => {
                 href={profileData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all"
+                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all duration-200 hover:-translate-y-0.5"
                 aria-label="LinkedIn Profile"
                 title="LinkedIn"
               >
@@ -95,7 +104,7 @@ export const Hero: React.FC = () => {
 
               <a
                 href={`mailto:${profileData.email}`}
-                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all"
+                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all duration-200 hover:-translate-y-0.5"
                 aria-label="Send Email"
                 title="Email"
               >
@@ -106,7 +115,7 @@ export const Hero: React.FC = () => {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${
+                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-200 ${
                   copiedEmail
                     ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
                     : 'bg-navyBlue border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue/60'
@@ -121,7 +130,11 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: Professional Portrait Frame (5 cols) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[420px] rounded-3xl p-1 bg-gradient-to-b from-electricBlue/50 via-borderNavy to-navyBlue shadow-2xl">
+            <CardSpotlight
+              maxTilt={3}
+              enableTilt={true}
+              className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[420px] rounded-3xl p-1 bg-gradient-to-b from-electricBlue/50 via-borderNavy to-navyBlue shadow-2xl"
+            >
               {/* Inner card container */}
               <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-navyBlue flex items-center justify-center group">
                 <img
@@ -131,7 +144,7 @@ export const Hero: React.FC = () => {
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Bottom floating badge */}
+                {/* Bottom floating badge with verified corporate beacon */}
                 <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-darkNavy/90 backdrop-blur-md border border-borderNavy flex items-center justify-between shadow-lg">
                   <div>
                     <div className="flex items-center gap-1.5">
@@ -162,7 +175,7 @@ export const Hero: React.FC = () => {
               <div className="absolute -top-3 -right-3 w-10 h-10 rounded-2xl bg-electricBlue/20 border border-electricBlue flex items-center justify-center text-highlightBlue shadow-glow">
                 <Sparkles className="w-5 h-5" />
               </div>
-            </div>
+            </CardSpotlight>
 
             {/* Clickable Hint under portrait */}
             <button
@@ -178,7 +191,7 @@ export const Hero: React.FC = () => {
 
         {/* Executive Highlights Ribbon */}
         <div className="mt-16 pt-8 border-t border-borderNavy/50 grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
+          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
               <ShieldCheck className="w-4 h-4" />
             </div>
@@ -190,9 +203,9 @@ export const Hero: React.FC = () => {
                 {isBn ? 'দৈনিক সেলস ও ডিপোজিট' : 'Sales vs Bank Statement'}
               </p>
             </div>
-          </div>
+          </CardSpotlight>
 
-          <div className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
+          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-electricBlue/10 border border-electricBlue/30 flex items-center justify-center text-highlightBlue shrink-0">
               <Database className="w-4 h-4" />
             </div>
@@ -204,9 +217,9 @@ export const Hero: React.FC = () => {
                 {isBn ? 'ইআরপি ভিত্তিক মাল্টি-ডিপো' : 'ERP Multi-Depot Operations'}
               </p>
             </div>
-          </div>
+          </CardSpotlight>
 
-          <div className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
+          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -218,9 +231,9 @@ export const Hero: React.FC = () => {
                 {isBn ? 'উচ্চতর পিভট ও ফর্মুলা' : 'Advanced Pivot & XLOOKUP'}
               </p>
             </div>
-          </div>
+          </CardSpotlight>
 
-          <div className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
+          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
               <Award className="w-4 h-4" />
             </div>
@@ -232,7 +245,7 @@ export const Hero: React.FC = () => {
                 {isBn ? 'সাপ্লাই চেইনে উচ্চশিক্ষা' : 'Advanced Academic Track'}
               </p>
             </div>
-          </div>
+          </CardSpotlight>
         </div>
       </div>
 

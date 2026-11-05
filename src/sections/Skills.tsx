@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { skillsData, SkillCategory } from '../data/skillsData';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { FileSpreadsheet, BarChart3, Database, Briefcase, Check, Info } from 'lucide-react';
 
 export const Skills: React.FC = () => {
@@ -74,9 +75,9 @@ export const Skills: React.FC = () => {
         {/* Skill Category Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredCategories.map((category) => (
-            <div
+            <CardSpotlight
               key={category.id}
-              className="bg-navyBlue/90 border border-borderNavy rounded-2xl p-6 sm:p-7 shadow-card hover:border-borderNavy/80 transition-all flex flex-col justify-between"
+              className="bg-navyBlue/90 border border-borderNavy rounded-2xl p-6 sm:p-7 shadow-card hover:border-electricBlue/50 transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Category Header */}
@@ -99,11 +100,11 @@ export const Skills: React.FC = () => {
                   {category.skills.map((skill, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-darkNavy/70 border border-borderNavy/70 hover:border-electricBlue/50 transition-colors flex flex-col justify-between"
+                      className="p-3 rounded-xl bg-darkNavy/70 border border-borderNavy/70 hover:border-electricBlue/50 transition-all flex flex-col justify-between group/skill"
                     >
                       <div className="flex items-center gap-2">
-                        <Check className="w-3.5 h-3.5 text-electricBlue shrink-0" />
-                        <span className="text-xs font-bold text-white">
+                        <Check className="w-3.5 h-3.5 text-electricBlue shrink-0 group-hover/skill:scale-110 transition-transform" />
+                        <span className="text-xs font-bold text-white group-hover/skill:text-highlightBlue transition-colors">
                           {isBn ? skill.nameBn : skill.name}
                         </span>
                       </div>
@@ -114,7 +115,7 @@ export const Skills: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </CardSpotlight>
           ))}
         </div>
 

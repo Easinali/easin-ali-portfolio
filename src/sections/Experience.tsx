@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { experienceData } from '../data/experienceData';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { Building2, Calendar, MapPin, CheckCircle2, Monitor, Briefcase } from 'lucide-react';
 
 export const Experience: React.FC = () => {
@@ -48,12 +49,12 @@ export const Experience: React.FC = () => {
                   {item.isCurrent ? <Briefcase className="w-4 h-4" /> : <Monitor className="w-4 h-4" />}
                 </div>
 
-                {/* Card Container */}
-                <div
+                {/* Card Container with Spotlight */}
+                <CardSpotlight
                   className={`rounded-2xl border p-6 sm:p-8 transition-all duration-300 relative ${
                     item.isCurrent
                       ? 'bg-navyBlue/90 border-electricBlue/40 shadow-card hover:border-electricBlue'
-                      : 'bg-navyBlue/60 border-borderNavy hover:border-borderNavy/80'
+                      : 'bg-navyBlue/60 border-borderNavy hover:border-electricBlue/40'
                   }`}
                 >
                   {/* Top Badge & Header */}
@@ -139,7 +140,7 @@ export const Experience: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                </div>
+                </CardSpotlight>
               </div>
             );
           })}

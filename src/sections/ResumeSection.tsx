@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
+import { CardSpotlight } from '../components/CardSpotlight';
 import { FileText, Download, ExternalLink, ShieldCheck, Check, FolderDown } from 'lucide-react';
 
 export const ResumeSection: React.FC = () => {
@@ -24,7 +25,7 @@ export const ResumeSection: React.FC = () => {
         </div>
 
         {/* Premium Resume Card */}
-        <div className="max-w-4xl mx-auto bg-darkNavy border border-borderNavy hover:border-electricBlue/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-300">
+        <CardSpotlight maxTilt={2} className="max-w-4xl mx-auto bg-darkNavy border border-borderNavy hover:border-electricBlue/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-300">
           {/* Background Glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-electricBlue/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -132,7 +133,7 @@ export const ResumeSection: React.FC = () => {
               </p>
             </div>
           </div>
-        </div>
+        </CardSpotlight>
       </div>
     </section>
   );

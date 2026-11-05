@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
-import { projectsData, ProjectItem } from '../data/projectsData';
+import { projectsData, ProjectItem, ProjectCategoryFilter } from '../data/projectsData';
 import { ProjectModal } from '../components/ProjectModal';
-import { Layers, ArrowRight, Wrench, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
+import { LiveProjectPreviewModal } from '../components/LiveProjectPreviewModal';
+import { CardSpotlight } from '../components/CardSpotlight';
+import { Layers, ArrowRight, Wrench, ShieldCheck, Sparkles, AlertCircle, Play, FileSpreadsheet, Database, Truck, BarChart3 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
   const { t, language } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [filter, setFilter] = useState<'all' | 'workplace' | 'simulation'>('all');
+  const [selectedDetailProject, setSelectedDetailProject] = useState<ProjectItem | null>(null);
+  const [selectedPreviewProject, setSelectedPreviewProject] = useState<ProjectItem | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<ProjectCategoryFilter>('all');
 
   const isBn = language === 'bn';
 
-  const workplaceCount = projectsData.filter((p) => p.type === 'workplace').length;
-  const simulationCount = projectsData.filter((p) => p.type === 'simulation').length;
+  const filterTabs: { id: ProjectCategoryFilter; label: string; icon: React.ReactNode }[] = [
+    { id: 'all', label: t.projects.categories.all, icon: <Layers className="w-3.5 h-3.5" /> },
+    { id: 'excel-mis', label: t.projects.categories.excelMis, icon: <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-400" /> },
+    { id: 'inventory', label: t.projects.categories.inventory, icon: <Database className="w-3.5 h-3.5 text-blue-400" /> },
+    { id: 'supply-chain', label: t.projects.categories.supplyChain, icon: <Truck className="w-3.5 h-3.5 text-emerald-400" /> },
+    { id: 'data-analysis', label: t.projects.categories.dataAnalysis, icon: <BarChart3 className="w-3.5 h-3.5 text-highlightBlue" /> },
+  ];
 
-  const filteredProjects = filter === 'all'
+  const filteredProjects = categoryFilter === 'all'
     ? projectsData
-    : projectsData.filter((p) => p.type === filter);
+    : projectsData.filter((p) => p.categoryFilter === categoryFilter);
 
   return (
     <section id="projects" className="py-20 md:py-28 bg-navyBlue/20 border-y border-borderNavy/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-electricBlue/10 text-highlightBlue border border-electricBlue/20 mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold bg-electricBlue/10 text-highlightBlue border border-electricBlue/20 mb-3 shadow-sm">
             {t.projects.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
@@ -42,68 +50,48 @@ export const Projects: React.FC = () => {
           </p>
         </div>
 
-        {/* Type Filter Buttons with Counts */}
+        {/* Interactive Category Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          <button
-            type="button"
-            onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              filter === 'all'
-                ? 'bg-electricBlue text-white shadow-glow'
-                : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy'
-            }`}
-          >
-            <span>{t.projects.filterAll}</span>
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-darkNavy/60">
-              {projectsData.length}
-            </span>
-          </button>
+          {filterTabs.map((tab) => {
+            const count = tab.id === 'all'
+              ? projectsData.length
+              : projectsData.filter((p) => p.categoryFilter === tab.id).length;
 
-          <button
-            type="button"
-            onClick={() => setFilter('workplace')}
-            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-              filter === 'workplace'
-                ? 'bg-electricBlue text-white shadow-glow'
-                : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy'
-            }`}
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-highlightBlue" />
-            <span>{t.projects.workplaceBadge}</span>
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-darkNavy/60">
-              {workplaceCount}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setFilter('simulation')}
-            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-              filter === 'simulation'
-                ? 'bg-electricBlue text-white shadow-glow'
-                : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>{t.projects.simulationBadge}</span>
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-darkNavy/60">
-              {simulationCount}
-            </span>
-          </button>
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setCategoryFilter(tab.id)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-2 ${
+                  categoryFilter === tab.id
+                    ? 'bg-electricBlue text-white shadow-glow border border-highlightBlue/40'
+                    : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy hover:border-electricBlue/50'
+                }`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${categoryFilter === tab.id ? 'bg-darkNavy text-white' : 'bg-darkNavy/70 text-slate-300'}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Projects Cards Grid */}
+        {/* Projects Cards Grid with 3D Tilt and Spotlight */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => {
             const title = isBn ? project.titleBn : project.title;
-            const category = isBn ? project.categoryBn : project.category;
+            const category = isBn ? project.categoryLabelBn : project.categoryLabel;
             const desc = isBn ? project.shortDescriptionBn : project.shortDescription;
             const badge = isBn ? project.badgeTextBn : project.badgeText;
 
             return (
-              <div
+              <CardSpotlight
                 key={project.id}
-                className="bg-navyBlue/90 border border-borderNavy hover:border-electricBlue rounded-2xl overflow-hidden shadow-card flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1.5"
+                enableTilt={true}
+                maxTilt={4}
+                className="bg-navyBlue/90 border border-borderNavy rounded-2xl overflow-hidden shadow-card flex flex-col justify-between group hover:border-electricBlue/60 transition-all duration-300"
               >
                 <div>
                   {/* Screenshot / Graphic Mockup Preview */}
@@ -124,7 +112,11 @@ export const Projects: React.FC = () => {
                             : 'bg-darkNavy/90 text-emerald-400 border border-emerald-500/40'
                         }`}
                       >
-                        <Layers className="w-3 h-3" />
+                        {project.type === 'workplace' ? (
+                          <ShieldCheck className="w-3 h-3 text-highlightBlue" />
+                        ) : (
+                          <Sparkles className="w-3 h-3 text-emerald-400" />
+                        )}
                         {badge}
                       </span>
                     </div>
@@ -167,27 +159,46 @@ export const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Footer Action */}
-                <div className="p-6 pt-0">
+                {/* Footer Action Buttons: View Details & Live Preview */}
+                <div className="p-6 pt-0 flex items-center gap-2.5">
                   <button
                     type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-darkNavy hover:bg-electricBlue border border-borderNavy hover:border-electricBlue text-white text-xs font-semibold shadow-sm transition-all duration-200 group/btn"
+                    onClick={() => setSelectedDetailProject(project)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-darkNavy hover:bg-slate-800 border border-borderNavy hover:border-electricBlue text-white text-xs font-semibold transition-all duration-200"
                   >
                     <span>{t.projects.viewDetails}</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 text-highlightBlue" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPreviewProject(project)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-electricBlue hover:bg-blue-600 text-white text-xs font-semibold shadow-glow transition-all duration-200 group/live"
+                  >
+                    <Play className="w-3 h-3 fill-current transition-transform group-hover/live:scale-110" />
+                    <span>{t.projects.livePreview}</span>
                   </button>
                 </div>
-              </div>
+              </CardSpotlight>
             );
           })}
         </div>
       </div>
 
-      {/* Detail Modal Component */}
+      {/* Project Detail Modal */}
       <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        project={selectedDetailProject}
+        onClose={() => setSelectedDetailProject(null)}
+        onOpenLivePreview={(proj) => {
+          setSelectedDetailProject(null);
+          setSelectedPreviewProject(proj);
+        }}
+      />
+
+      {/* Interactive Live Preview Modal */}
+      <LiveProjectPreviewModal
+        project={selectedPreviewProject}
+        onClose={() => setSelectedPreviewProject(null)}
       />
     </section>
   );

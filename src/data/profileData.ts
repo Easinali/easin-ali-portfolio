@@ -30,10 +30,10 @@ export const profileData: ProfileData = {
   currentDesignationBn: "অ্যাসিস্ট্যান্ট অফিসার",
   email: "mdeasinalituhin@gmail.com", // Editable placeholder
   phone: "+880 1943-214464", // Editable placeholder
-  phoneDisplay: "+880 1943-214464 [Editable]",
+  phoneDisplay: "+880 1943-214464",
   location: "Dhaka, Bangladesh",
   locationBn: "ঢাকা, বাংলাদেশ",
-  linkedinUrl: "https://www.linkedin.com/in/easin-ali-placeholder", // Editable placeholder
+  linkedinUrl: "https://www.linkedin.com/in/mdeasinalituhin/", // Editable placeholder
   githubUrl: "https://github.com",
   resumePdfPath: "/documents/Easin_Ali_CV.pdf",
   portraitPath: "/images/profile.jpg",
