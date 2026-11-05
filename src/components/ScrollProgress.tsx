@@ -30,3 +30,4 @@ export const ScrollProgress: React.FC = () => {
     </div>
   );
 };
+

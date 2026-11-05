@@ -23,6 +23,7 @@ export const CustomCursor: React.FC = () => {
     }
 
     setIsEnabled(true);
+    document.body.classList.add('custom-cursor-enabled');
 
     const onMouseMove = (e: MouseEvent) => {
       mousePos.current.x = e.clientX;
@@ -44,14 +45,19 @@ export const CustomCursor: React.FC = () => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      if (target.closest('[data-cursor="card"], [data-tilt-card]')) {
-        setHoverState('card');
-      } else if (
-        target.closest('a, button, [role="button"], input, select, textarea, [data-cursor="pointer"]')
-      ) {
-        setHoverState('pointer');
+      if (target.closest('input, textarea, [contenteditable="true"]')) {
+        setIsVisible(false);
       } else {
-        setHoverState('default');
+        setIsVisible(true);
+        if (target.closest('[data-cursor="card"], [data-tilt-card]')) {
+          setHoverState('card');
+        } else if (
+          target.closest('a, button, [role="button"], select, [data-cursor="pointer"]')
+        ) {
+          setHoverState('pointer');
+        } else {
+          setHoverState('default');
+        }
       }
     };
 
@@ -76,6 +82,7 @@ export const CustomCursor: React.FC = () => {
     rafId.current = requestAnimationFrame(animateRing);
 
     return () => {
+      document.body.classList.remove('custom-cursor-enabled');
       window.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);

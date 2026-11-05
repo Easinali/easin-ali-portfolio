@@ -95,3 +95,4 @@ export const CardSpotlight: React.FC<CardSpotlightProps> = ({
     </div>
   );
 };
+

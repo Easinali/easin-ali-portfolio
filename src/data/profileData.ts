@@ -33,7 +33,7 @@ export const profileData: ProfileData = {
   phoneDisplay: "+880 1943-214464",
   location: "Dhaka, Bangladesh",
   locationBn: "ঢাকা, বাংলাদেশ",
-  linkedinUrl: "https://www.linkedin.com/in/mdeasinalituhin/", // Editable placeholder
+  linkedinUrl: "https://www.linkedin.com/in/mdeasinalituhin", // Editable placeholder
   githubUrl: "https://github.com",
   resumePdfPath: "/documents/Easin_Ali_CV.pdf",
   portraitPath: "/images/profile.jpg",
