@@ -34,8 +34,9 @@ export const profileData: ProfileData = {
   location: "Dhaka, Bangladesh",
   locationBn: "ঢাকা, বাংলাদেশ",
   linkedinUrl: "https://www.linkedin.com/in/mdeasinalituhin", // Editable placeholder
-  githubUrl: "https://github.com",
+  githubUrl: "https://github.com/Easinali",
   resumePdfPath: "/documents/Easin_Ali_CV.pdf",
   portraitPath: "/images/profile.jpg",
+  portraitFallback: "/images/profile-placeholder.svg",
 };
 
