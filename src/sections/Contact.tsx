@@ -100,6 +100,7 @@ export const Contact: React.FC = () => {
                     {profileData.phoneDisplay}
                   </span>
                   <span className="text-[10px] text-secondaryText/60 italic">
+                   {isBn ? '' : ''}
                   </span>
                 </div>
               </div>
