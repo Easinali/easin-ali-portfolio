@@ -37,6 +37,5 @@ export const profileData: ProfileData = {
   githubUrl: "https://github.com",
   resumePdfPath: "/documents/Easin_Ali_CV.pdf",
   portraitPath: "/images/profile.jpg",
-  portraitFallback: "/images/profile-placeholder.svg",
 };
 
