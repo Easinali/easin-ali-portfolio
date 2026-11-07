@@ -120,7 +120,7 @@ export const Contact: React.FC = () => {
                     {t.contact.linkedinLabel}
                   </span>
                   <span className="text-sm font-bold text-white group-hover:text-highlightBlue transition-colors block">
-                    linkedin.com/in/easin-ali
+                    Linkedin
                   </span>
                   <span className="text-[10px] text-secondaryText/60">
                     {isBn ? 'পেশাদার নেটওয়ার্কে সংযুক্ত হন' : 'Connect on professional network'}
