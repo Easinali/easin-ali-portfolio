@@ -100,7 +100,6 @@ export const Contact: React.FC = () => {
                     {profileData.phoneDisplay}
                   </span>
                   <span className="text-[10px] text-secondaryText/60 italic">
-                    {isBn ? 'src/data/profileData.ts এ পরিবর্তনযোগ্য' : 'Editable in src/data/profileData.ts'}
                   </span>
                 </div>
               </div>
