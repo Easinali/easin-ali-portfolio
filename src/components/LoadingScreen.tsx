@@ -13,19 +13,21 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Smooth progress counter up to 100%
+    // 10 Seconds total duration: 100 increments with 100ms interval = 10,000ms
+    const totalDurationMs = 10000;
+    const intervalMs = 100;
+    const totalSteps = totalDurationMs / intervalMs; // 100 steps
+    let currentStep = 0;
+
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        // Random increment between 3 and 10 for organic loading feel
-        const increment = Math.floor(Math.random() * 8) + 4;
-        const next = prev + increment;
-        return next > 100 ? 100 : next;
-      });
-    }, 45);
+      currentStep += 1;
+      const nextProgress = Math.min(100, Math.round((currentStep / totalSteps) * 100));
+      setProgress(nextProgress);
+
+      if (currentStep >= totalSteps) {
+        clearInterval(interval);
+      }
+    }, intervalMs);
 
     return () => clearInterval(interval);
   }, []);
@@ -39,7 +41,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
           if (onFinish) onFinish();
         }, 600);
         return () => clearTimeout(finishTimer);
-      }, 300);
+      }, 400);
       return () => clearTimeout(timer);
     }
   }, [progress, onFinish]);
@@ -50,43 +52,30 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-lightGreenBg dark:bg-darkNavy transition-all duration-700 ease-out select-none ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-radial-gradient text-white select-none transition-all duration-700 ease-out ${
         isFadingOut ? 'opacity-0 pointer-events-none scale-105' : 'opacity-100'
       }`}
       aria-label="Loading portfolio"
     >
-      {/* Decorative ambient background glows */}
-      <div className="absolute w-72 h-72 rounded-full bg-emerald-400/20 dark:bg-electricBlue/15 blur-3xl pointer-events-none" />
-
       <div className="relative z-10 flex flex-col items-center max-w-sm w-full px-6">
-        {/* Name at the top */}
-        <div className="mb-8 text-center animate-pulse">
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-700 dark:text-highlightBlue block mb-2 font-semibold">
-            {language === 'bn' ? 'পোর্টফোলিও লোড হচ্ছে' : 'PORTFOLIO INITIALIZING'}
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        {/* Only Name at the top */}
+        <div className="mb-10 text-center animate-pulse">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white drop-shadow-md">
             {displayName}
           </h1>
-          <p className="text-xs text-slate-500 dark:text-secondaryText mt-1.5 font-medium">
-            {language === 'bn' ? 'অপারেশনস • এমআইএস • সাপ্লাই চেইন' : 'Operations • MIS Reporting • Supply Chain'}
-          </p>
         </div>
 
         {/* Loading Bar Container */}
-        <div className="w-full bg-emerald-100 dark:bg-navyBlue/90 rounded-full h-2.5 p-0.5 border border-emerald-300/80 dark:border-borderNavy shadow-inner overflow-hidden relative">
+        <div className="w-full bg-white/20 backdrop-blur-md rounded-full h-3 p-0.5 border border-white/40 shadow-inner overflow-hidden relative">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 dark:from-electricBlue dark:via-blue-500 dark:to-highlightBlue transition-all duration-100 ease-out shadow-sm"
+            className="h-full rounded-full bg-[#C6F135] transition-all duration-100 ease-linear shadow-lg"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         {/* Percentage Counter underneath loading bar */}
-        <div className="w-full flex items-center justify-between mt-3 text-xs font-mono">
-          <span className="text-slate-500 dark:text-secondaryText/70 flex items-center gap-1.5 text-[11px]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-electricBlue animate-ping" />
-            Loading assets
-          </span>
-          <span className="font-bold text-emerald-800 dark:text-highlightBlue text-sm tracking-wider">
+        <div className="w-full flex items-center justify-center mt-4">
+          <span className="font-mono font-extrabold text-[#C6F135] text-2xl tracking-widest drop-shadow">
             {progress}%
           </span>
         </div>

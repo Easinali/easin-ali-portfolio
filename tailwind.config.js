@@ -18,15 +18,20 @@ export default {
         primaryText: '#FFFFFF',
         secondaryText: '#CBD5E1',
 
+        // Custom Vibrant Theme tokens
+        limeHighlight: '#C6F135',
+        radialBlue: '#3F5EFB',
+        radialPink: '#FC466B',
+
         // Light Green theme tokens
-        lightGreenBg: '#F0FDF4',      // Soft mint green background
-        lightGreenPanel: '#ECFDF5',   // Slightly deeper panel
+        lightGreenBg: '#C6F135',      // Lime vibrant background
+        lightGreenPanel: '#d4f558',   // Slightly deeper panel
         lightGreenCard: '#FFFFFF',    // Clean card surface
-        lightGreenBorder: '#A7F3D0',  // Soft emerald border
-        lightGreenText: '#064E3B',    // Forest green dark text
-        lightGreenMuted: '#335343',   // Muted green text
-        emeraldAccent: '#059669',     // Emerald accent
-        emeraldHighlight: '#10B981',  // Bright emerald
+        lightGreenBorder: '#aee81e',  // Lime border
+        lightGreenText: '#101827',    // High-contrast dark text
+        lightGreenMuted: '#374151',   // Muted text
+        emeraldAccent: '#C6F135',     // Accent
+        emeraldHighlight: '#C6F135',  // Highlight
       },
       fontFamily: {
         sans: ['Inter', 'Hind Siliguri', 'sans-serif'],

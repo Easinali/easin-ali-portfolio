@@ -28,9 +28,9 @@ export const AppContent: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Continuous Bi-directional Intersection Observer (works both scrolling down and scrolling up)
+  // Continuous Bi-directional Intersection Observer with dynamic individual section animations
   useEffect(() => {
-    const elements = document.querySelectorAll('.section-reveal');
+    const elements = document.querySelectorAll('.section-transition');
     if (!elements.length) return;
 
     const observer = new IntersectionObserver(
@@ -39,15 +39,14 @@ export const AppContent: React.FC = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
           } else {
-            // Re-trigger animation when scrolled away (bidirectional push transition)
-            // Keep hero visible once initially viewed to avoid flicker at top
+            // Re-trigger animation when scrolled away (bidirectional transition)
             if (!entry.target.classList.contains('hero-wrapper')) {
               entry.target.classList.remove('is-visible');
             }
           }
         });
       },
-      { threshold: 0.12, rootMargin: '-30px 0px -40px 0px' }
+      { threshold: 0.12, rootMargin: '-20px 0px -40px 0px' }
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -60,8 +59,8 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-lightGreenBg dark:bg-darkNavy text-slate-800 dark:text-primaryText selection:bg-emerald-500 dark:selection:bg-electricBlue selection:text-white relative transition-colors duration-400">
-      {/* Interactive Loading Screen with Name & Progress bar */}
+    <div className="min-h-screen text-slate-800 dark:text-primaryText selection:bg-[#C6F135] selection:text-slate-900 dark:selection:bg-electricBlue dark:selection:text-white relative transition-colors duration-400">
+      {/* 10-Second Loading Screen with Name and Percentage Counter */}
       <LoadingScreen />
 
       {/* Pinned Scroll Progress Indicator */}
@@ -74,15 +73,50 @@ export const AppContent: React.FC = () => {
       <Navbar />
 
       <main className="pt-8 sm:pt-12">
-        <div className="section-reveal is-visible hero-wrapper"><Hero /></div>
-        <div className="section-reveal"><About /></div>
-        <div className="section-reveal"><Experience /></div>
-        <div className="section-reveal"><Education /></div>
-        <div className="section-reveal"><Skills /></div>
-        <div className="section-reveal"><Projects /></div>
-        <div className="section-reveal"><Certifications /></div>
-        <div className="section-reveal"><ResumeSection /></div>
-        <div className="section-reveal"><Contact /></div>
+        {/* 1. Hero: Classic Smooth Fade Push */}
+        <div className="section-transition transition-hero is-visible hero-wrapper">
+          <Hero />
+        </div>
+
+        {/* 2. About Me: Comb Transition (Staggered Slice & Skew) */}
+        <div className="section-transition transition-comb">
+          <About />
+        </div>
+
+        {/* 3. Experience: Vortex Transition (Swirling 3D Inward Scale) */}
+        <div className="section-transition transition-vortex">
+          <Experience />
+        </div>
+
+        {/* 4. Education: Switch Transition (Z-Depth Layer Switch) */}
+        <div className="section-transition transition-switch">
+          <Education />
+        </div>
+
+        {/* 5. Skills: Flip Transition (3D Card Perspective Flip) */}
+        <div className="section-transition transition-flip">
+          <Skills />
+        </div>
+
+        {/* 6. Projects: Gallery Transition (Cinematic Zoom & Light Reveal) */}
+        <div className="section-transition transition-gallery">
+          <Projects />
+        </div>
+
+        {/* 7. Certifications: Comb Transition */}
+        <div className="section-transition transition-comb">
+          <Certifications />
+        </div>
+
+        {/* 8. Resume: Switch Transition */}
+        <div className="section-transition transition-switch">
+          <ResumeSection />
+        </div>
+
+        {/* 9. Contact: Vortex Transition */}
+        <div className="section-transition transition-vortex">
+          <Contact />
+        </div>
       </main>
 
       <Footer />
