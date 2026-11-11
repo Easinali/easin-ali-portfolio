@@ -93,16 +93,18 @@ export const CustomCursor: React.FC = () => {
 
   if (!isEnabled) return null;
 
-  // Determine ring sizing & glow based on hoverState
-  let ringClasses = 'w-9 h-9 border-electricBlue/50 bg-electricBlue/5';
-  let dotClasses = 'w-2 h-2 bg-electricBlue shadow-[0_0_8px_#3B82F6]';
+  // Determine ring sizing & glow based on hoverState and active theme
+  // Day mode uses the original vibrant electric blue (#3B82F6 & #75B8FF)
+  // Dark mode enhances with theme-appropriate visibility
+  let ringClasses = 'w-9 h-9 border-[#3B82F6]/60 bg-[#3B82F6]/10 dark:border-[#75B8FF]/60 dark:bg-[#3B82F6]/15 shadow-[0_0_10px_rgba(59,130,246,0.25)]';
+  let dotClasses = 'w-2 h-2 bg-[#3B82F6] dark:bg-[#75B8FF] shadow-[0_0_8px_#3B82F6]';
 
   if (hoverState === 'pointer') {
-    ringClasses = 'w-14 h-14 border-electricBlue/90 bg-electricBlue/15 shadow-[0_0_20px_rgba(59,130,246,0.35)]';
-    dotClasses = 'w-2.5 h-2.5 bg-highlightBlue shadow-[0_0_12px_#75B8FF]';
+    ringClasses = 'w-14 h-14 border-[#3B82F6] bg-[#3B82F6]/20 dark:border-[#75B8FF] dark:bg-[#75B8FF]/20 shadow-[0_0_22px_rgba(59,130,246,0.4)]';
+    dotClasses = 'w-2.5 h-2.5 bg-[#2563EB] dark:bg-[#75B8FF] shadow-[0_0_12px_#3B82F6]';
   } else if (hoverState === 'card') {
-    ringClasses = 'w-16 h-16 border-highlightBlue/70 bg-electricBlue/10 shadow-[0_0_25px_rgba(59,130,246,0.25)]';
-    dotClasses = 'w-2 h-2 bg-electricBlue shadow-[0_0_8px_#3B82F6]';
+    ringClasses = 'w-16 h-16 border-[#2563EB]/80 bg-[#3B82F6]/15 dark:border-[#75B8FF]/80 dark:bg-[#3B82F6]/20 shadow-[0_0_25px_rgba(59,130,246,0.3)]';
+    dotClasses = 'w-2 h-2 bg-[#3B82F6] dark:bg-[#75B8FF] shadow-[0_0_8px_#3B82F6]';
   }
 
   return (

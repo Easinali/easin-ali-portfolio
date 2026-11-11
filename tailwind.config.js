@@ -21,8 +21,8 @@ export default {
         navyBlue: '#13161B',          // #13161B dark card background
         cardNavy: '#1A1F26',          // #1A1F26 deeper card
         borderNavy: 'rgba(255, 255, 255, 0.08)',
-        electricBlue: '#C6F135',      // Accent color lime
-        highlightBlue: '#C6F135',     // Accent color lime
+        electricBlue: '#3B82F6',      // Original Electric Blue (#3B82F6)
+        highlightBlue: '#75B8FF',     // Original Highlight Blue (#75B8FF)
         primaryText: '#EDEEF0',
         secondaryText: '#9AA3B2',
 
