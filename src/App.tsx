@@ -14,6 +14,7 @@ import { Certifications } from './sections/Certifications';
 import { ResumeSection } from './sections/ResumeSection';
 import { Contact } from './sections/Contact';
 import { Footer } from './components/Footer';
+import { LoadingScreen } from './components/LoadingScreen';
 import { ArrowUp } from 'lucide-react';
 
 export const AppContent: React.FC = () => {
@@ -27,7 +28,7 @@ export const AppContent: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intersection Observer for scroll-triggered section entrance animations
+  // Continuous Bi-directional Intersection Observer (works both scrolling down and scrolling up)
   useEffect(() => {
     const elements = document.querySelectorAll('.section-reveal');
     if (!elements.length) return;
@@ -37,11 +38,16 @@ export const AppContent: React.FC = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+          } else {
+            // Re-trigger animation when scrolled away (bidirectional push transition)
+            // Keep hero visible once initially viewed to avoid flicker at top
+            if (!entry.target.classList.contains('hero-wrapper')) {
+              entry.target.classList.remove('is-visible');
+            }
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.12, rootMargin: '-30px 0px -40px 0px' }
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -55,6 +61,9 @@ export const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-lightGreenBg dark:bg-darkNavy text-slate-800 dark:text-primaryText selection:bg-emerald-500 dark:selection:bg-electricBlue selection:text-white relative transition-colors duration-400">
+      {/* Interactive Loading Screen with Name & Progress bar */}
+      <LoadingScreen />
+
       {/* Pinned Scroll Progress Indicator */}
       <ScrollProgress />
 
@@ -65,7 +74,7 @@ export const AppContent: React.FC = () => {
       <Navbar />
 
       <main className="pt-8 sm:pt-12">
-        <div className="section-reveal is-visible"><Hero /></div>
+        <div className="section-reveal is-visible hero-wrapper"><Hero /></div>
         <div className="section-reveal"><About /></div>
         <div className="section-reveal"><Experience /></div>
         <div className="section-reveal"><Education /></div>
