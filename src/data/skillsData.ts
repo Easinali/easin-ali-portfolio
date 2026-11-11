@@ -77,6 +77,7 @@ export const skillsData: SkillCategory[] = [
       { name: 'Microsoft Word', nameBn: 'মাইক্রোসফট ওয়ার্ড', context: 'Official memos, notices, letters & structured layouts', contextBn: 'অফিসিয়াল মেমো, নোটিশ ও স্ট্রাকচার্ড ডকুমেন্টস' },
       { name: 'Microsoft PowerPoint', nameBn: 'মাইক্রোসফট পাওয়ারপয়েন্ট', context: 'Executive slide decks, operational charts & briefings', contextBn: 'অপারেশনাল ব্রিফিং ও বিজনেস প্রেজেন্টেশন স্লাইড' },
       { name: 'Microsoft Outlook', nameBn: 'মাইক্রোসফট আউটলুক', context: 'Corporate communication, scheduling & task follow-ups', contextBn: 'পেশাদার ইমেইল যোগাযোগ ও ক্যালেন্ডার শিডিউলিং' },
+      { name: 'Microsoft Excel', nameBn: 'মাইক্রোসফট এক্সেল', context: 'Advanced analytical modeling, formulas & dynamic reporting', contextBn: 'উচ্চতর ফর্মুলা, ডাটা মডেলিং ও ডাইনামিক রিপোর্টিং' },
     ]
   }
 ];
