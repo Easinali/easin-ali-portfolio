@@ -8,30 +8,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark theme tokens
-        darkNavy: '#101827',
-        navyBlue: '#172338',
-        cardNavy: '#1a263c',
-        borderNavy: '#283955',
-        electricBlue: '#3B82F6',
-        highlightBlue: '#75B8FF',
-        primaryText: '#FFFFFF',
-        secondaryText: '#CBD5E1',
+        // Reference Theme Tokens (Dark & Lime Accent)
+        ink: '#0B0D10',
+        cardDark: '#13161B',
+        card2Dark: '#1A1F26',
+        lime: '#C6F135',
+        violet2: '#7C3AED',
+        mint: '#5EEAD4',
 
-        // Custom Vibrant Theme tokens
-        limeHighlight: '#C6F135',
-        radialBlue: '#3F5EFB',
-        radialPink: '#FC466B',
+        // Dark theme tokens
+        darkNavy: '#0B0D10',          // #0B0D10 ink background
+        navyBlue: '#13161B',          // #13161B dark card background
+        cardNavy: '#1A1F26',          // #1A1F26 deeper card
+        borderNavy: 'rgba(255, 255, 255, 0.08)',
+        electricBlue: '#C6F135',      // Accent color lime
+        highlightBlue: '#C6F135',     // Accent color lime
+        primaryText: '#EDEEF0',
+        secondaryText: '#9AA3B2',
 
         // Light Green theme tokens
-        lightGreenBg: '#C6F135',      // Lime vibrant background
-        lightGreenPanel: '#d4f558',   // Slightly deeper panel
-        lightGreenCard: '#FFFFFF',    // Clean card surface
-        lightGreenBorder: '#aee81e',  // Lime border
-        lightGreenText: '#101827',    // High-contrast dark text
-        lightGreenMuted: '#374151',   // Muted text
-        emeraldAccent: '#C6F135',     // Accent
-        emeraldHighlight: '#C6F135',  // Highlight
+        lightGreenBg: '#F6F6F3',      // Soft off-white
+        lightGreenPanel: '#FFFFFF',
+        lightGreenCard: '#FFFFFF',
+        lightGreenBorder: 'rgba(0, 0, 0, 0.08)',
+        lightGreenText: '#0B0D10',
+        lightGreenMuted: '#5B6573',
+        emeraldAccent: '#C6F135',
+        emeraldHighlight: '#C6F135',
       },
       fontFamily: {
         sans: ['Inter', 'Hind Siliguri', 'sans-serif'],

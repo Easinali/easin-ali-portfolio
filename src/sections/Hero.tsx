@@ -19,45 +19,44 @@ export const Hero: React.FC = () => {
   const isBn = language === 'bn';
 
   return (
-    <section id="home" className="relative min-h-[92vh] pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden flex items-center bg-[#07090C] text-[#EDEEF0]">
-      {/* Background elements directly from reference template */}
-      <div className="noise" />
-      <div className="grid-bg" />
-      <div className="orb w-[500px] h-[500px] -top-40 -left-40 bg-[rgba(124,58,237,0.35)]" />
-      <div className="orb w-[450px] h-[450px] top-1/3 -right-32 bg-[rgba(198,241,53,0.18)]" />
-      <div className="orb w-[300px] h-[300px] bottom-0 left-1/3 bg-[rgba(94,234,212,0.15)]" />
+    <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      {/* Subtle Background Accent Lighting */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] rounded-full blur-[140px] pointer-events-none opacity-40 bg-gradient-to-tr from-emerald-400/25 via-teal-300/20 to-transparent dark:from-electricBlue/20 dark:via-highlightBlue/15 dark:to-transparent"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Headline, Bio & CTAs (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Corporate Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#13161B] border border-white/10 shadow-sm backdrop-blur-md">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#C6F135] animate-pulse" />
-              <Building2 className="w-3.5 h-3.5 text-[#C6F135]" />
-              <span className="text-xs font-semibold text-slate-200">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-100/80 dark:bg-navyBlue/90 border border-emerald-300 dark:border-borderNavy shadow-sm backdrop-blur-md">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <Building2 className="w-3.5 h-3.5 text-emerald-700 dark:text-highlightBlue" />
+              <span className="text-xs font-semibold text-emerald-900 dark:text-slate-200">
                 {t.hero.companyBadge}
               </span>
             </div>
 
             {/* Greeting & Main Headline */}
             <div className="space-y-2">
-              <p className="text-sm md:text-base font-semibold text-[#C6F135] tracking-wider uppercase">
+              <p className="text-sm md:text-base font-semibold text-emerald-700 dark:text-highlightBlue tracking-wider uppercase">
                 {t.hero.greeting}
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {language === 'bn' ? profileData.nameBn : profileData.name}
               </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#C6F135] tracking-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-700 dark:text-highlightBlue tracking-tight">
                 {t.hero.role}
               </h2>
-              <p className="text-sm sm:text-base text-slate-300 font-medium">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-medium">
                 {t.hero.subRole}
               </p>
             </div>
 
             {/* Supporting Text */}
-            <p className="text-base sm:text-lg text-[#9AA3B2] leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-secondaryText leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {t.hero.supportingText}
             </p>
 
