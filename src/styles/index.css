@@ -219,7 +219,7 @@ html.dark .theme-panel {
 
 /* 5. Gallery Effect: Smooth cinematic Zoom & Curtain reveal */
 .transition-gallery {
-  transform: scale(2) translateY(110px);
+  transform: scale(0.9) translateY(110px);
   filter: blur(8px) brightness(0.7);
 }
 .transition-gallery.is-visible {
