@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './hooks/useLanguage';
+import { ThemeProvider } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgress } from './components/ScrollProgress';
@@ -15,7 +16,7 @@ import { Contact } from './sections/Contact';
 import { Footer } from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
-export const App: React.FC = () => {
+export const AppContent: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -26,21 +27,21 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intersection Observer for scroll-triggered reveal animations
+  // Intersection Observer for scroll-triggered section entrance animations
   useEffect(() => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
+    const elements = document.querySelectorAll('.section-reveal');
     if (!elements.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
+            entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -53,44 +54,53 @@ export const App: React.FC = () => {
   };
 
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-darkNavy text-primaryText selection:bg-electricBlue selection:text-white relative">
-        {/* Pinned Scroll Progress Indicator */}
-        <ScrollProgress />
+    <div className="min-h-screen bg-lightGreenBg dark:bg-darkNavy text-slate-800 dark:text-primaryText selection:bg-emerald-500 dark:selection:bg-electricBlue selection:text-white relative transition-colors duration-400">
+      {/* Pinned Scroll Progress Indicator */}
+      <ScrollProgress />
 
-        {/* Custom Electric-Blue Cursor Follower */}
-        <CustomCursor />
+      {/* Custom Cursor Follower */}
+      <CustomCursor />
 
-        {/* Sticky Glass Navbar */}
-        <Navbar />
+      {/* Radial Shape Floating Navbar */}
+      <Navbar />
 
-        <main>
-          <Hero />
-          <div className="reveal-on-scroll"><About /></div>
-          <div className="reveal-on-scroll"><Experience /></div>
-          <div className="reveal-on-scroll"><Education /></div>
-          <div className="reveal-on-scroll"><Skills /></div>
-          <div className="reveal-on-scroll"><Projects /></div>
-          <div className="reveal-on-scroll"><Certifications /></div>
-          <div className="reveal-on-scroll"><ResumeSection /></div>
-          <div className="reveal-on-scroll"><Contact /></div>
-        </main>
-        <Footer />
+      <main className="pt-8 sm:pt-12">
+        <div className="section-reveal is-visible"><Hero /></div>
+        <div className="section-reveal"><About /></div>
+        <div className="section-reveal"><Experience /></div>
+        <div className="section-reveal"><Education /></div>
+        <div className="section-reveal"><Skills /></div>
+        <div className="section-reveal"><Projects /></div>
+        <div className="section-reveal"><Certifications /></div>
+        <div className="section-reveal"><ResumeSection /></div>
+        <div className="section-reveal"><Contact /></div>
+      </main>
 
-        {/* Floating Scroll To Top Button */}
-        {showScrollTop && (
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-electricBlue/90 hover:bg-electricBlue text-white shadow-glow transition-all duration-300 hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-electricBlue focus:ring-offset-2 focus:ring-offset-darkNavy border border-highlightBlue/40 backdrop-blur-sm group"
-            aria-label="Scroll back to top"
-            title="Scroll to top"
-          >
-            <ArrowUp className="w-5 h-5 transition-transform duration-200 group-hover:-translate-y-0.5" />
-          </button>
-        )}
-      </div>
-    </LanguageProvider>
+      <Footer />
+
+      {/* Floating Scroll To Top Button */}
+      {showScrollTop && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-emerald-600 dark:bg-electricBlue hover:bg-emerald-700 dark:hover:bg-blue-600 text-white shadow-lg hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-electricBlue transition-all duration-300 border border-emerald-400/40 dark:border-highlightBlue/40 backdrop-blur-sm group"
+          aria-label="Scroll back to top"
+          title="Scroll to top"
+        >
+          <ArrowUp className="w-5 h-5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+        </button>
+      )}
+    </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ThemeToggle } from './ThemeToggle';
 import { Menu, X, FileDown, Layers } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -58,28 +59,27 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'glass-nav py-2.5 shadow-lg shadow-black/30'
-          : 'bg-darkNavy/85 backdrop-blur-md py-3.5 border-b border-borderNavy/40'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-4 pointer-events-none">
+      {/* ── Radial Floating Capsule / Pill Bar ── */}
+      <div
+        className={`pointer-events-auto w-full max-w-6xl radial-navbar px-3.5 sm:px-5 py-2 sm:py-2.5 transition-all duration-300 ${
+          isScrolled ? 'scale-[0.98] shadow-2xl' : 'scale-100'
+        }`}
+      >
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo / Brand */}
           <a
             href="#home"
-            className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-electricBlue rounded-xl p-1"
+            className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-electricBlue rounded-full p-1"
           >
-            <div className="w-9 h-9 rounded-xl bg-electricBlue/15 border border-electricBlue/40 flex items-center justify-center text-highlightBlue group-hover:bg-electricBlue group-hover:text-white transition-all duration-300 shadow-sm">
-              <Layers className="w-5 h-5" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-500/15 dark:bg-electricBlue/15 border border-emerald-500/40 dark:border-electricBlue/40 flex items-center justify-center text-emerald-600 dark:text-highlightBlue group-hover:bg-emerald-500 dark:group-hover:bg-electricBlue group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+              <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <span className="font-bold text-base sm:text-lg text-white tracking-tight group-hover:text-highlightBlue transition-colors block leading-tight">
+              <span className="font-bold text-xs sm:text-sm text-slate-800 dark:text-white tracking-tight group-hover:text-emerald-600 dark:group-hover:text-highlightBlue transition-colors block leading-tight">
                 {language === 'bn' ? profileData.nameBn : profileData.name}
               </span>
-              <span className="text-[10px] text-highlightBlue font-semibold tracking-wider uppercase block">
+              <span className="text-[9px] sm:text-[10px] text-emerald-600 dark:text-highlightBlue font-semibold tracking-wider uppercase block">
                 {language === 'bn' ? 'অপারেশনস ও ডাটা' : 'Operations & MIS'}
               </span>
             </div>
@@ -93,18 +93,18 @@ export const Navbar: React.FC = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-lg transition-all duration-200 group ${
+                  className={`relative px-2.5 lg:px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-full transition-all duration-200 group ${
                     isActive
-                      ? 'bg-electricBlue/15 text-highlightBlue border border-electricBlue/30 shadow-sm'
-                      : 'text-secondaryText hover:text-white hover:bg-slate-800/40 border border-transparent'
+                      ? 'bg-emerald-500/15 dark:bg-electricBlue/15 text-emerald-700 dark:text-highlightBlue border border-emerald-500/30 dark:border-electricBlue/30 shadow-sm'
+                      : 'text-slate-600 dark:text-secondaryText hover:text-slate-900 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-slate-800/40 border border-transparent'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   <span>{link.label}</span>
-                  {/* Animated Underline */}
+                  {/* Active Indicator Underline */}
                   <span
                     aria-hidden="true"
-                    className={`absolute bottom-0 left-2.5 right-2.5 h-[2px] bg-gradient-to-r from-electricBlue to-highlightBlue rounded-full transition-all duration-300 origin-left ${
+                    className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-gradient-to-r from-emerald-500 to-teal-400 dark:from-electricBlue dark:to-highlightBlue rounded-full transition-all duration-300 origin-left ${
                       isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-80'
                     }`}
                   />
@@ -113,75 +113,81 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Desktop Right Actions: Lang Switcher & CV Button */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop Right Actions: Theme Toggle, Lang Switcher & CV Button */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-3">
+            {/* Theme Toggle Button (☀️ / 🌙) */}
+            <ThemeToggle />
+
+            {/* Language Switcher */}
             <LanguageSwitcher />
 
+            {/* CV Download Button */}
             <a
               href={profileData.resumePdfPath}
               download="Easin_Ali_CV.pdf"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-electricBlue hover:bg-blue-600 text-white shadow-sm hover:shadow-glow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electricBlue focus:ring-offset-2 focus:ring-offset-darkNavy"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 lg:px-4 lg:py-2 text-xs font-semibold rounded-full bg-emerald-600 hover:bg-emerald-700 dark:bg-electricBlue dark:hover:bg-blue-600 text-white shadow-sm hover:shadow-glow-green dark:hover:shadow-glow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-electricBlue"
             >
               <FileDown className="w-3.5 h-3.5" />
               <span>{t.nav.downloadCv}</span>
             </a>
           </div>
 
-          {/* Mobile Actions: Language & Hamburger */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Actions: Theme, Language & Hamburger */}
+          <div className="flex md:hidden items-center gap-1.5">
+            <ThemeToggle />
             <LanguageSwitcher />
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-secondaryText hover:text-white hover:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-electricBlue transition-colors"
+              className="p-1.5 rounded-full text-slate-700 dark:text-secondaryText hover:text-slate-900 dark:hover:text-white hover:bg-emerald-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-borderNavy bg-navyBlue/95 backdrop-blur-2xl px-4 pt-3 pb-6 shadow-2xl animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col space-y-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-between ${
-                    isActive
-                      ? 'bg-electricBlue/20 text-highlightBlue border border-electricBlue/30'
-                      : 'text-secondaryText hover:text-white hover:bg-slate-800/60'
-                  }`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  <span>{link.label}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-electricBlue" />}
-                </a>
-              );
-            })}
-          </nav>
+        {/* Mobile Dropdown Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-3 pt-3 border-t border-emerald-200 dark:border-borderNavy/80 animate-in slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col space-y-1">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center justify-between ${
+                      isActive
+                        ? 'bg-emerald-500/15 dark:bg-electricBlue/20 text-emerald-700 dark:text-highlightBlue border border-emerald-500/30 dark:border-electricBlue/30'
+                        : 'text-slate-600 dark:text-secondaryText hover:text-slate-900 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-slate-800/60'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <span>{link.label}</span>
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-electricBlue" />}
+                  </a>
+                );
+              })}
+            </nav>
 
-          <div className="mt-4 pt-4 border-t border-borderNavy/60 flex flex-col gap-3">
-            <a
-              href={profileData.resumePdfPath}
-              download="Easin_Ali_CV.pdf"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-sm transition-colors shadow-glow"
-            >
-              <FileDown className="w-4 h-4" />
-              <span>{t.nav.downloadCv}</span>
-            </a>
+            <div className="mt-3 pt-3 border-t border-emerald-200 dark:border-borderNavy/60">
+              <a
+                href={profileData.resumePdfPath}
+                download="Easin_Ali_CV.pdf"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 dark:bg-electricBlue dark:hover:bg-blue-600 text-white font-semibold text-xs transition-colors shadow-sm"
+              >
+                <FileDown className="w-4 h-4" />
+                <span>{t.nav.downloadCv}</span>
+              </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
