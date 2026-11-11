@@ -86,14 +86,14 @@ export const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Nav Items with Active Scrollspy & Animated Underlines */}
-          <nav className="hidden xl:flex items-center gap-1" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-2.5 lg:px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-full transition-all duration-200 group ${
+                  className={`relative px-2 xl:px-2.5 py-1 text-[11px] xl:text-xs font-semibold rounded-full whitespace-nowrap transition-all duration-200 group ${
                     isActive
                       ? 'bg-emerald-500/15 dark:bg-electricBlue/15 text-emerald-700 dark:text-highlightBlue border border-emerald-500/30 dark:border-electricBlue/30 shadow-sm'
                       : 'text-slate-600 dark:text-secondaryText hover:text-slate-900 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-slate-800/40 border border-transparent'
@@ -104,7 +104,7 @@ export const Navbar: React.FC = () => {
                   {/* Active Indicator Underline */}
                   <span
                     aria-hidden="true"
-                    className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-gradient-to-r from-emerald-500 to-teal-400 dark:from-electricBlue dark:to-highlightBlue rounded-full transition-all duration-300 origin-left ${
+                    className={`absolute bottom-0.5 left-2 right-2 h-[2px] bg-gradient-to-r from-emerald-500 to-teal-400 dark:from-electricBlue dark:to-highlightBlue rounded-full transition-all duration-300 origin-left ${
                       isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-80'
                     }`}
                   />
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Desktop Right Actions: Theme Toggle, Lang Switcher & CV Button */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          <div className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 shrink-0">
             {/* Theme Toggle Button (☀️ / 🌙) */}
             <ThemeToggle />
 
@@ -125,15 +125,15 @@ export const Navbar: React.FC = () => {
             <a
               href={profileData.resumePdfPath}
               download="Easin_Ali_CV.pdf"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 lg:px-4 lg:py-2 text-xs font-semibold rounded-full bg-emerald-600 hover:bg-emerald-700 dark:bg-electricBlue dark:hover:bg-blue-600 text-white shadow-sm hover:shadow-glow-green dark:hover:shadow-glow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-electricBlue"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 xl:px-3.5 xl:py-2 text-xs font-semibold rounded-full bg-emerald-600 hover:bg-emerald-700 dark:bg-electricBlue dark:hover:bg-blue-600 text-white shadow-sm hover:shadow-glow-green dark:hover:shadow-glow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-electricBlue whitespace-nowrap shrink-0"
             >
-              <FileDown className="w-3.5 h-3.5" />
+              <FileDown className="w-3.5 h-3.5 shrink-0" />
               <span>{t.nav.downloadCv}</span>
             </a>
           </div>
 
           {/* Mobile Actions: Theme, Language & Hamburger */}
-          <div className="flex md:hidden items-center gap-1.5">
+          <div className="flex lg:hidden items-center gap-1.5 shrink-0">
             <ThemeToggle />
             <LanguageSwitcher />
 
@@ -151,7 +151,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-3 border-t border-emerald-200 dark:border-borderNavy/80 animate-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden mt-3 pt-3 border-t border-emerald-200 dark:border-borderNavy/80 animate-in slide-in-from-top-2 duration-200">
             <nav className="flex flex-col space-y-1">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
