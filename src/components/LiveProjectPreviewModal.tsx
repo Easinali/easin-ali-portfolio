@@ -92,20 +92,20 @@ export const LiveProjectPreviewModal: React.FC<LiveProjectPreviewModalProps> = (
       aria-labelledby="preview-modal-title"
     >
       <div
-        className="relative w-full max-w-4xl bg-navyBlue border border-borderNavy shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col editorial-card corner-bracket"
+        className="relative w-full max-w-4xl bg-navyBlue border border-electricBlue/40 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-start justify-between p-5 md:p-6 border-b border-borderNavy bg-darkNavy/90">
+        <div className="flex items-start justify-between p-5 md:p-6 border-b border-borderNavy/80 bg-darkNavy/80">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-1.5 font-mono">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs font-semibold bg-electricBlue/15 text-electricBlue border border-electricBlue/40">
+            <div className="flex flex-wrap items-center gap-2 mb-1.5">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-electricBlue/20 text-highlightBlue border border-electricBlue/40">
                 <Play className="w-3 h-3 fill-current" />
                 {isBn ? 'ইন্টারেক্টিভ লাইভ মডেল প্রিভিউ' : 'Interactive Live Model Preview'}
               </span>
-              <span className="mono-label text-secondaryText/70">{badgeText}</span>
+              <span className="text-xs text-secondaryText/70 font-medium">{badgeText}</span>
             </div>
-            <h2 id="preview-modal-title" className="text-lg md:text-xl font-bold text-warmWhite tracking-tight">
+            <h2 id="preview-modal-title" className="text-lg md:text-xl font-bold text-white tracking-tight">
               {title}
             </h2>
           </div>
@@ -113,11 +113,10 @@ export const LiveProjectPreviewModal: React.FC<LiveProjectPreviewModalProps> = (
           <button
             type="button"
             onClick={onClose}
-            className="p-2 border border-borderNavy text-secondaryText hover:text-warmWhite hover:border-electricBlue/50 transition-colors focus:outline-none"
+            className="p-2 rounded-xl text-secondaryText hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-electricBlue"
             aria-label={t.projects.closeModal}
-            data-magnetic
           >
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6" />
           </button>
         </div>
 
@@ -537,17 +536,16 @@ export const LiveProjectPreviewModal: React.FC<LiveProjectPreviewModalProps> = (
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="p-4 md:p-5 border-t border-borderNavy bg-darkNavy/95 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="mono-label text-secondaryText/60 italic text-center sm:text-left">
+        <div className="p-4 md:p-5 border-t border-borderNavy/80 bg-darkNavy/90 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-secondaryText/70 italic text-center sm:text-left">
             {isBn ? project.details.downloadableNoteBn : project.details.downloadableNote}
           </p>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto font-mono text-xs">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               type="button"
               onClick={downloadSampleData}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-electricBlue hover:bg-highlightBlue text-darkNavy font-bold tracking-wider uppercase shadow-glow transition-all"
-              data-magnetic
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white text-xs font-semibold shadow-glow transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               <span>{t.projects.modal.downloadMockup}</span>
@@ -556,7 +554,7 @@ export const LiveProjectPreviewModal: React.FC<LiveProjectPreviewModalProps> = (
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 border border-borderNavy hover:border-electricBlue/50 text-secondaryText hover:text-warmWhite tracking-wider uppercase transition-colors"
+              className="px-4 py-2.5 rounded-xl border border-borderNavy hover:bg-slate-800 text-secondaryText hover:text-white text-xs font-medium transition-colors"
             >
               {t.projects.closeModal}
             </button>

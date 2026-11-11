@@ -14,10 +14,10 @@ export const en = {
   hero: {
     greeting: "Hello, I'm",
     name: "Easin Ali",
-    role: "Data Management | MIS Reporting | Supply Chain Operations",
-    subRole: "Assistant Officer at Paragon Group",
+    role: "Data Management & Operations Professional",
+    subRole: "Aspiring Supply Chain Professional",
     companyBadge: "Paragon Group • Assistant Officer",
-    supportingText: "Managing enterprise inventory records, multi-outlet MIS reporting, and financial reconciliations within ERP systems, while pursuing strategic Supply Chain competencies.",
+    supportingText: "I work with data, reporting, inventory operations and ERP-based systems, with a growing professional focus on Supply Chain Management.",
     exploreProjects: "Explore My Projects",
     downloadCv: "Download My CV",
     statusBadge: "Available for Corporate Inquiries",
@@ -35,14 +35,14 @@ export const en = {
     p2: "With a strong command of Microsoft Excel and analytical reporting frameworks, I specialize in MIS reporting, outlet operations support, and daily sales-to-bank deposit reconciliations—ensuring zero financial discrepancies and timely decision support for leadership.",
     p3: "To elevate my strategic impact, I am concurrently pursuing an MBA and a Post Graduate Diploma (PGD) in Supply Chain Management. My objective is to combine hands-on operational discipline with advanced supply chain methodologies to drive logistics efficiency, reduce inventory holding costs, and optimize enterprise resources.",
     stats: {
-      exp: "Physical Stock Tracking & ERP Records",
-      expVal: "ERP & Inventory",
-      accuracy: "Variance Tracking & Daily Summaries",
-      accuracyVal: "MIS & Analytics",
-      reconciled: "POS-to-Bank Deposit Balancing",
-      reconciledVal: "Reconciliation",
-      erp: "Concurrent MBA & PGD-SCM Studies",
-      erpVal: "SCM Growth"
+      exp: "Years Professional Experience",
+      expVal: "Active",
+      accuracy: "Operational Data Accuracy",
+      accuracyVal: "100%",
+      reconciled: "Outlets & Deposits Handled",
+      reconciledVal: "Daily",
+      erp: "ERP & MIS Specialization",
+      erpVal: "Core"
     }
   },
   experience: {
@@ -50,7 +50,7 @@ export const en = {
     title: "Professional Experience",
     subtitle: "Real-world operational stewardship and enterprise accountability",
     currentTag: "Current Organization",
-    previousTag: "Transferable Business & Administrative Experience",
+    previousTag: "Previous Business Enterprise",
     editableNotice: "Dates and designations can be modified anytime in src/data/experienceData.ts",
     current: {
       role: "Assistant Officer",

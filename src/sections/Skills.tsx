@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { skillsData, SkillCategory } from '../data/skillsData';
-import { FileSpreadsheet, BarChart3, Database, Briefcase, Check } from 'lucide-react';
+import { CardSpotlight } from '../components/CardSpotlight';
+import { FileSpreadsheet, BarChart3, Database, Briefcase, Check, Info } from 'lucide-react';
 
 export const Skills: React.FC = () => {
   const { t, language } = useLanguage();
@@ -10,10 +11,14 @@ export const Skills: React.FC = () => {
 
   const getCategoryIcon = (id: SkillCategory['id']) => {
     switch (id) {
-      case 'excel':       return <FileSpreadsheet className="w-4 h-4 text-crtGreen" />;
-      case 'reporting':   return <BarChart3 className="w-4 h-4 text-electricBlue" />;
-      case 'erp':         return <Database className="w-4 h-4 text-highlightBlue" />;
-      case 'productivity':return <Briefcase className="w-4 h-4 text-secondaryText" />;
+      case 'excel':
+        return <FileSpreadsheet className="w-5 h-5 text-emerald-400" />;
+      case 'reporting':
+        return <BarChart3 className="w-5 h-5 text-highlightBlue" />;
+      case 'erp':
+        return <Database className="w-5 h-5 text-blue-400" />;
+      case 'productivity':
+        return <Briefcase className="w-5 h-5 text-amber-400" />;
     }
   };
 
@@ -22,113 +27,105 @@ export const Skills: React.FC = () => {
     : skillsData.filter((cat) => cat.id === activeTab);
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
-      <div aria-hidden="true" className="section-index absolute -top-6 -left-4 select-none pointer-events-none">04</div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="mono-label text-electricBlue">04</span>
-          <span className="w-12 h-px bg-electricBlue" />
-          <span className="inline-block px-3 py-1 border border-borderNavy mono-label text-secondaryText">{t.skills.badge}</span>
-        </div>
-
-        {/* Editorial heading */}
-        <div className="mb-12">
-          <h2 className="font-black text-warmWhite leading-none" style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)', letterSpacing: '-0.04em' }}>
+    <section id="skills" className="py-20 md:py-28 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-electricBlue/10 text-highlightBlue border border-electricBlue/20 mb-3">
+            {t.skills.badge}
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             {t.skills.title}
           </h2>
-          <p className="mt-4 text-secondaryText max-w-xl">{t.skills.subtitle}</p>
+          <p className="mt-2 text-base text-secondaryText">
+            {t.skills.subtitle}
+          </p>
         </div>
 
-        {/* Category filter — terminal command style */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 font-mono">
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
           <button
             type="button"
             onClick={() => setActiveTab('all')}
-            className={`px-4 py-2 text-xs tracking-wider uppercase transition-all duration-200 border ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === 'all'
-                ? 'bg-electricBlue text-darkNavy border-electricBlue'
-                : 'border-borderNavy text-secondaryText hover:border-electricBlue/50 hover:text-warmWhite'
+                ? 'bg-electricBlue text-white shadow-glow'
+                : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy'
             }`}
           >
-            <span className="text-secondaryText/40 mr-1">$</span>
-            {t.skills.filterAll}
-            <span className="ml-2 text-[10px] opacity-60">({skillsData.reduce((a, c) => a + c.skills.length, 0)})</span>
+            <span>{t.skills.filterAll}</span>
           </button>
 
-          {skillsData.map((cat) => {
-            const label = isBn ? cat.titleBn : cat.title;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActiveTab(cat.id)}
-                className={`px-4 py-2 text-xs tracking-wider uppercase transition-all duration-200 border flex items-center gap-1.5 ${
-                  activeTab === cat.id
-                    ? 'bg-electricBlue text-darkNavy border-electricBlue'
-                    : 'border-borderNavy text-secondaryText hover:border-electricBlue/50 hover:text-warmWhite'
-                }`}
-              >
-                {getCategoryIcon(cat.id)}
-                <span>{label}</span>
-              </button>
-            );
-          })}
+          {skillsData.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setActiveTab(cat.id)}
+              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                activeTab === cat.id
+                  ? 'bg-electricBlue text-white shadow-glow'
+                  : 'bg-navyBlue text-secondaryText hover:text-white border border-borderNavy'
+              }`}
+            >
+              {isBn ? cat.titleBn : cat.title}
+            </button>
+          ))}
         </div>
 
-        {/* Skills categories — terminal box style */}
-        <div className="space-y-8 reveal-stagger">
-          {filteredCategories.map((cat) => {
-            const name = isBn ? cat.titleBn : cat.title;
-            const desc = isBn ? cat.subtitleBn : cat.subtitle;
-
-            return (
-              <div key={cat.id} className="editorial-card corner-bracket" data-cursor="card">
-                {/* Terminal header bar */}
-                <div className="flex items-center justify-between px-5 py-3 border-b border-borderNavy">
-                  <div className="flex items-center gap-2">
-                    {getCategoryIcon(cat.id)}
-                    <span className="font-mono text-xs text-warmWhite tracking-wider uppercase">{name}</span>
+        {/* Skill Category Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredCategories.map((category) => (
+            <CardSpotlight
+              key={category.id}
+              className="bg-navyBlue/90 border border-borderNavy rounded-2xl p-6 sm:p-7 shadow-card hover:border-electricBlue/50 transition-all flex flex-col justify-between"
+            >
+              <div>
+                {/* Category Header */}
+                <div className="flex items-center gap-3 pb-5 border-b border-borderNavy/60 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-darkNavy border border-borderNavy flex items-center justify-center shrink-0">
+                    {getCategoryIcon(category.id)}
                   </div>
-                  <span className="mono-label text-secondaryText/40">
-                    {cat.skills.length} {isBn ? 'টি দক্ষতা' : 'SKILLS'}
-                  </span>
+                  <div>
+                    <h3 className="text-lg font-bold text-white tracking-tight">
+                      {isBn ? category.titleBn : category.title}
+                    </h3>
+                    <p className="text-xs text-secondaryText/80">
+                      {isBn ? category.subtitleBn : category.subtitle}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-5 sm:p-6">
-                  <p className="text-secondaryText/70 text-xs mb-5 font-mono leading-relaxed">
-                    <span className="text-electricBlue">&gt; </span>{desc}
-                  </p>
-
-                  {/* Skill chips */}
-                  <div className="flex flex-wrap gap-2">
-                    {cat.skills.map((skill, idx) => {
-                      const name = isBn ? skill.nameBn : skill.name;
-                      const context = isBn ? skill.contextBn : skill.context;
-                      const isCoreSkill = idx < 4;
-                      return (
-                        <div
-                          key={idx}
-                          title={context}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 border font-mono text-xs transition-all duration-200 ${
-                            isCoreSkill
-                              ? 'border-electricBlue/40 text-electricBlue/90 hover:border-electricBlue hover:text-electricBlue'
-                              : 'border-borderNavy text-secondaryText/60 hover:border-borderNavy/80 hover:text-secondaryText'
-                          }`}
-                        >
-                          <Check className={`w-3 h-3 ${isCoreSkill ? 'text-electricBlue' : 'text-secondaryText/30'}`} />
-                          <span>{name}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                {/* Skills Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {category.skills.map((skill, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-xl bg-darkNavy/70 border border-borderNavy/70 hover:border-electricBlue/50 transition-all flex flex-col justify-between group/skill"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-electricBlue shrink-0 group-hover/skill:scale-110 transition-transform" />
+                        <span className="text-xs font-bold text-white group-hover/skill:text-highlightBlue transition-colors">
+                          {isBn ? skill.nameBn : skill.name}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-secondaryText/70 mt-1 pl-5">
+                        {isBn ? skill.contextBn : skill.context}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
+            </CardSpotlight>
+          ))}
+        </div>
+
+        {/* Authenticity Note */}
+        <div className="mt-10 max-w-2xl mx-auto p-4 rounded-xl bg-navyBlue/40 border border-borderNavy/60 text-center flex items-center justify-center gap-2 text-xs text-secondaryText/70">
+          <Info className="w-4 h-4 text-highlightBlue shrink-0" />
+          <span>{t.skills.note}</span>
         </div>
       </div>
     </section>
   );
 };
+

@@ -81,3 +81,4 @@ export const certificationsData: CertificationItem[] = [
     skillsLearnedBn: ["এক্সিকিউটিভ ব্রিফিং", "এসওপি ডকুমেন্টেশন", "ডাটা কোয়ালিটি নিশ্চিতকরণ", "টিম ওয়ার্কফ্লো"]
   }
 ];
+

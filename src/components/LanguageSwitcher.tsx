@@ -11,24 +11,23 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = 
 
   return (
     <div
-      className={`inline-flex items-center border border-borderNavy bg-darkNavy/90 p-0.5 shadow-sm font-mono ${className}`}
+      className={`inline-flex items-center rounded-lg border border-borderNavy bg-navyBlue/80 p-1 shadow-sm backdrop-blur-sm ${className}`}
       role="group"
       aria-label="Language selection"
     >
-      <div className="flex items-center px-1.5 text-secondaryText/60" aria-hidden="true">
-        <Globe className="h-3 w-3 text-electricBlue" />
+      <div className="flex items-center px-1.5 text-secondaryText" aria-hidden="true">
+        <Globe className="h-3.5 w-3.5 text-highlightBlue" />
       </div>
 
       <button
         type="button"
         onClick={() => setLanguage('en')}
-        className={`px-2.5 py-1 text-[11px] font-bold tracking-wider transition-all duration-200 ${
+        className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide transition-all duration-200 ${
           language === 'en'
-            ? 'bg-electricBlue text-darkNavy shadow-sm'
-            : 'text-secondaryText hover:text-warmWhite'
+            ? 'bg-electricBlue text-white shadow-sm'
+            : 'text-secondaryText hover:text-white hover:bg-slate-800/60'
         }`}
         aria-pressed={language === 'en'}
-        data-magnetic
       >
         EN
       </button>
@@ -36,16 +35,16 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = 
       <button
         type="button"
         onClick={() => setLanguage('bn')}
-        className={`px-2.5 py-1 text-[11px] font-bold tracking-wider transition-all duration-200 ${
+        className={`rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide font-bengali transition-all duration-200 ${
           language === 'bn'
-            ? 'bg-electricBlue text-darkNavy shadow-sm'
-            : 'text-secondaryText hover:text-warmWhite'
+            ? 'bg-electricBlue text-white shadow-sm'
+            : 'text-secondaryText hover:text-white hover:bg-slate-800/60'
         }`}
         aria-pressed={language === 'bn'}
-        data-magnetic
       >
-        বাং
+        বাংলা
       </button>
     </div>
   );
 };
+

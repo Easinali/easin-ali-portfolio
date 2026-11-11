@@ -22,8 +22,8 @@ export interface ProfileData {
 export const profileData: ProfileData = {
   name: "Easin Ali",
   nameBn: "ইয়াসিন আলী",
-  headline: "Data Management | MIS Reporting | Supply Chain Operations",
-  headlineBn: "ডাটা ম্যানেজমেন্ট | এমআইএস রিপোর্টিং | সাপ্লাই চেইন অপারেশনস",
+  headline: "Data Management & Operations Professional | Aspiring Supply Chain Professional",
+  headlineBn: "ডাটা ম্যানেজমেন্ট ও অপারেশনস প্রফেশনাল | সাপ্লাই চেইন প্রফেশনাল",
   currentCompany: "Paragon Group",
   currentCompanyBn: "প্যারাগন গ্রুপ",
   currentDesignation: "Assistant Officer",

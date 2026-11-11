@@ -1,66 +1,59 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
-import { Mail, Linkedin } from 'lucide-react';
+import { ArrowUp, ShieldCheck, Mail, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
-  const isBn = language === 'bn';
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer className="bg-darkNavy border-t border-borderNavy/60 pt-12 pb-8">
+    <footer className="bg-darkNavy border-t border-borderNavy/70 pt-12 pb-8 text-secondaryText">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-borderNavy/40">
-
-          {/* Identity */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-borderNavy/50">
+          {/* Identity & Mission */}
           <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 border border-electricBlue/40 flex items-center justify-center">
-                <span className="font-mono text-xs font-bold text-electricBlue">EA</span>
-              </div>
-              <h3 className="font-bold text-warmWhite tracking-tight">
-                {isBn ? profileData.nameBn : profileData.name}
-              </h3>
-            </div>
-            <p className="text-xs text-secondaryText/70 leading-relaxed max-w-xs mono-label">
-              {isBn ? profileData.headlineBn : profileData.headline}
+            <h3 className="text-lg font-bold text-white tracking-tight">
+              {language === 'bn' ? profileData.nameBn : profileData.name}
+            </h3>
+            <p className="text-xs text-secondaryText/80 leading-relaxed max-w-sm">
+              {language === 'bn' ? profileData.headlineBn : profileData.headline}
             </p>
-            <div className="flex items-center gap-2 mono-label text-electricBlue/70">
-              <span className="w-1 h-1 rounded-full bg-crtGreen animate-pulse" />
-              <span>{isBn ? 'প্যারাগন গ্রুপ • অ্যাসিস্ট্যান্ট অফিসার' : 'Paragon Group • Assistant Officer'}</span>
+            <div className="flex items-center gap-2 pt-1 text-xs text-highlightBlue">
+              <ShieldCheck className="w-4 h-4" />
+              <span>{language === 'bn' ? 'প্যারাগন গ্রুপ • অ্যাসিস্ট্যান্ট অফিসার' : 'Paragon Group • Assistant Officer'}</span>
             </div>
           </div>
 
-          {/* Quick nav */}
+          {/* Quick Nav Links */}
           <div className="space-y-3">
-            <h4 className="mono-label text-warmWhite/50 mb-3">{isBn ? 'দ্রুত লিঙ্ক' : 'NAVIGATION'}</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { href: '#about', label: t.nav.about },
-                { href: '#experience', label: t.nav.experience },
-                { href: '#education', label: t.nav.education },
-                { href: '#skills', label: t.nav.skills },
-                { href: '#projects', label: t.nav.projects },
-                { href: '#contact', label: t.nav.contact },
-              ].map(link => (
-                <a key={link.href} href={link.href} className="mono-label text-secondaryText/50 hover:text-electricBlue transition-colors">
-                  {link.label}
-                </a>
-              ))}
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              {language === 'bn' ? 'দ্রুত লিঙ্কসমূহ' : 'Quick Navigation'}
+            </h4>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <a href="#about" className="hover:text-highlightBlue transition-colors">{t.nav.about}</a>
+              <a href="#experience" className="hover:text-highlightBlue transition-colors">{t.nav.experience}</a>
+              <a href="#education" className="hover:text-highlightBlue transition-colors">{t.nav.education}</a>
+              <a href="#skills" className="hover:text-highlightBlue transition-colors">{t.nav.skills}</a>
+              <a href="#projects" className="hover:text-highlightBlue transition-colors">{t.nav.projects}</a>
+              <a href="#contact" className="hover:text-highlightBlue transition-colors">{t.nav.contact}</a>
             </div>
           </div>
 
-          {/* Connect */}
-          <div className="space-y-4 flex flex-col justify-between">
+          {/* Connect & Back to top */}
+          <div className="space-y-3 flex flex-col justify-between">
             <div>
-              <h4 className="mono-label text-warmWhite/50 mb-3">{isBn ? 'পেশাদার যোগাযোগ' : 'CHANNELS'}</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2">
+                {language === 'bn' ? 'পেশাদার যোগাযোগ' : 'Professional Channels'}
+              </h4>
               <div className="flex items-center gap-3">
                 <a
                   href={`mailto:${profileData.email}`}
-                  className="w-9 h-9 border border-borderNavy flex items-center justify-center text-secondaryText hover:text-warmWhite hover:border-electricBlue/50 transition-all"
+                  className="w-9 h-9 rounded-lg bg-navyBlue border border-borderNavy flex items-center justify-center text-secondaryText hover:text-white hover:border-electricBlue transition-all"
                   aria-label="Email"
                 >
                   <Mail className="w-4 h-4" />
@@ -69,8 +62,8 @@ export const Footer: React.FC = () => {
                   href={profileData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border border-borderNavy flex items-center justify-center text-secondaryText hover:text-warmWhite hover:border-electricBlue/50 transition-all"
-                  aria-label="LinkedIn"
+                  className="w-9 h-9 rounded-lg bg-navyBlue border border-borderNavy flex items-center justify-center text-secondaryText hover:text-white hover:border-electricBlue transition-all"
+                  aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -80,18 +73,20 @@ export const Footer: React.FC = () => {
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-2 mono-label text-secondaryText/40 hover:text-electricBlue transition-colors self-start px-3 py-1.5 border border-borderNavy hover:border-electricBlue/40"
+              className="inline-flex items-center gap-1.5 text-xs text-secondaryText hover:text-highlightBlue transition-colors self-start"
             >
-              <span>↑</span>
+              <ArrowUp className="w-3.5 h-3.5" />
               <span>{t.footer.backToTop}</span>
             </button>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between mono-label text-secondaryText/30 gap-3">
-          <p>© {currentYear} {isBn ? profileData.nameBn : profileData.name}. {t.footer.copyright}</p>
-          <p>{t.footer.techNote}</p>
+        {/* Bottom Attribution */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-secondaryText/60 gap-3">
+          <p>© {currentYear} {language === 'bn' ? profileData.nameBn : profileData.name}. {t.footer.copyright}</p>
+          <p className="flex items-center gap-1">
+            <span>{t.footer.techNote}</span>
+          </p>
         </div>
       </div>
     </footer>

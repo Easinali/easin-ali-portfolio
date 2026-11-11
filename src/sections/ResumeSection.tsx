@@ -1,74 +1,71 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
-import { Download, ExternalLink, ShieldCheck, Check, FolderDown } from 'lucide-react';
+import { CardSpotlight } from '../components/CardSpotlight';
+import { FileText, Download, ExternalLink, ShieldCheck, Check, FolderDown } from 'lucide-react';
 
 export const ResumeSection: React.FC = () => {
   const { t, language } = useLanguage();
   const isBn = language === 'bn';
 
   return (
-    <section id="resume" className="py-24 md:py-32 section-panel relative overflow-hidden">
-      <div aria-hidden="true" className="section-index absolute -top-6 -left-4 select-none pointer-events-none">07</div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="mono-label text-electricBlue">07</span>
-          <span className="w-12 h-px bg-electricBlue" />
-          <span className="inline-block px-3 py-1 border border-borderNavy mono-label text-secondaryText">{t.resume.badge}</span>
-        </div>
-
-        <div className="mb-16">
-          <h2 className="font-black text-warmWhite leading-none" style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)', letterSpacing: '-0.04em' }}>
+    <section id="resume" className="py-20 md:py-28 bg-navyBlue/40 border-y border-borderNavy/40 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-electricBlue/10 text-highlightBlue border border-electricBlue/20 mb-3">
+            {t.resume.badge}
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             {t.resume.title}
           </h2>
-          <p className="mt-4 text-secondaryText max-w-xl">{t.resume.subtitle}</p>
+          <p className="mt-2 text-base text-secondaryText">
+            {t.resume.subtitle}
+          </p>
         </div>
 
-        {/* Resume card */}
-        <div className="max-w-4xl mx-auto editorial-card corner-bracket p-6 sm:p-10 relative overflow-hidden" data-cursor="card">
-          {/* Ambient glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[120px] pointer-events-none opacity-10"
-            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.6) 0%, transparent 70%)' }} />
+        {/* Premium Resume Card */}
+        <CardSpotlight maxTilt={2} className="max-w-4xl mx-auto bg-darkNavy border border-borderNavy hover:border-electricBlue/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-300">
+          {/* Background Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-electricBlue/10 rounded-full blur-[100px] pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            {/* Left: info (7 cols) */}
-            <div className="md:col-span-7 space-y-5">
-              <div className="flex items-center gap-2 px-3 py-1.5 border border-crtGreen/30 w-fit">
-                <ShieldCheck className="w-4 h-4 text-crtGreen" />
-                <span className="mono-label text-crtGreen/80">{t.resume.verifiedBadge}</span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+            {/* Left: Document Abstract Preview (7 cols) */}
+            <div className="md:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-navyBlue border border-borderNavy text-xs font-semibold text-highlightBlue">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>{t.resume.verifiedBadge}</span>
               </div>
 
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-warmWhite tracking-tight">
-                  {language === 'bn' ? profileData.nameBn : profileData.name}
-                </h3>
-                <p className="mono-label text-electricBlue mt-1">
-                  {language === 'bn' ? profileData.headlineBn : profileData.headline}
-                </p>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                {language === 'bn' ? profileData.nameBn : profileData.name}
+              </h3>
+
+              <p className="text-xs sm:text-sm text-highlightBlue font-semibold">
+                {language === 'bn' ? profileData.headlineBn : profileData.headline}
+              </p>
+
+              <div className="space-y-2 pt-2 text-xs text-secondaryText">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-electricBlue" />
+                  <span>{isBn ? 'প্যারাগন গ্রুপে অপারেশনস ও ডাটা ম্যানেজমেন্টের বিশদ বিবরণ' : 'Comprehensive Paragon Group data & operations record'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-electricBlue" />
+                  <span>{isBn ? 'মাইক্রোসফট এক্সেলে উচ্চতর দক্ষতা ও এমআইএস রিপোর্টিং ট্রেইল' : 'Detailed Microsoft Excel formula portfolio & MIS capabilities'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-electricBlue" />
+                  <span>{isBn ? 'এমবিএ ও সাপ্লাই চেইন ম্যানেজমেন্ট (PGD) উচ্চশিক্ষা' : 'MBA & PGD in Supply Chain Management academic credentials'}</span>
+                </div>
               </div>
 
-              <div className="space-y-2 text-xs text-secondaryText">
-                {[
-                  isBn ? 'প্যারাগন গ্রুপে অপারেশনস ও ডাটা ম্যানেজমেন্টের বিশদ বিবরণ' : 'Comprehensive Paragon Group data & operations record',
-                  isBn ? 'মাইক্রোসফট এক্সেলে উচ্চতর দক্ষতা ও এমআইএস রিপোর্টিং' : 'Detailed Microsoft Excel formula portfolio & MIS capabilities',
-                  isBn ? 'এমবিএ ও সাপ্লাই চেইন ম্যানেজমেন্ট (PGD) উচ্চশিক্ষা' : 'MBA & PGD in Supply Chain Management academic credentials',
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-electricBlue shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA buttons */}
-              <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
+              {/* Action Buttons */}
+              <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
                 <a
                   href={profileData.resumePdfPath}
                   download="Easin_Ali_CV.pdf"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-electricBlue text-darkNavy font-mono text-xs tracking-widest uppercase hover:bg-highlightBlue transition-colors"
-                  data-magnetic
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm shadow-glow transition-all"
                 >
                   <Download className="w-4 h-4" />
                   <span>{t.resume.downloadBtn}</span>
@@ -78,58 +75,65 @@ export const ResumeSection: React.FC = () => {
                   href={profileData.resumePdfPath}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-borderNavy text-secondaryText font-mono text-xs tracking-widest uppercase hover:border-electricBlue/50 hover:text-warmWhite transition-all"
-                  data-magnetic
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navyBlue hover:bg-slate-800 border border-borderNavy text-white font-semibold text-xs sm:text-sm transition-all hover:border-electricBlue/50"
                 >
-                  <ExternalLink className="w-4 h-4 text-electricBlue" />
+                  <ExternalLink className="w-4 h-4 text-highlightBlue" />
                   <span>{t.resume.viewBtn}</span>
                 </a>
               </div>
             </div>
 
-            {/* Right: document graphic (5 cols) */}
+            {/* Right: Realistic Document Preview Graphic (5 cols) */}
             <div className="md:col-span-5 flex flex-col items-center">
-              <div className="w-48 h-64 border border-borderNavy bg-navyBlue relative flex flex-col">
-                {/* Faux terminal top bar */}
-                <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-borderNavy">
-                  <span className="w-2 h-2 rounded-full bg-red-500/60" />
-                  <span className="w-2 h-2 rounded-full bg-crtAmber/60" />
-                  <span className="w-2 h-2 rounded-full bg-crtGreen/60" />
-                  <span className="ml-auto mono-label text-secondaryText/40">RESUME.PDF</span>
+              <div className="w-56 h-72 rounded-2xl bg-navyBlue/90 border-2 border-borderNavy p-5 shadow-2xl relative flex flex-col justify-between group">
+                <div className="flex items-center justify-between border-b border-borderNavy/60 pb-3">
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-highlightBlue" />
+                    <span className="text-[11px] font-bold text-white uppercase tracking-wider">RESUME.PDF</span>
+                  </div>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
 
-                {/* Simulated text lines */}
-                <div className="flex-1 p-4 space-y-2.5">
-                  <div className="h-3 bg-warmWhite/10 rounded w-3/4" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-full" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-5/6" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-4/6" />
-                  <div className="h-px bg-borderNavy my-3" />
-                  <div className="h-2.5 bg-electricBlue/25 rounded w-1/2" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-full" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-4/5" />
-                  <div className="h-2 bg-warmWhite/06 rounded w-3/5" />
+                {/* Abstract Text Lines */}
+                <div className="space-y-2 py-2">
+                  <div className="h-3 bg-slate-700/60 rounded w-3/4" />
+                  <div className="h-2 bg-slate-700/40 rounded w-full" />
+                  <div className="h-2 bg-slate-700/40 rounded w-5/6" />
+                  <div className="h-2 bg-slate-700/40 rounded w-4/6" />
+                  <div className="pt-2">
+                    <div className="h-2.5 bg-electricBlue/30 rounded w-1/2 mb-1.5" />
+                    <div className="h-2 bg-slate-700/30 rounded w-full" />
+                    <div className="h-2 bg-slate-700/30 rounded w-4/5" />
+                  </div>
                 </div>
 
-                <div className="px-3 py-2 border-t border-borderNavy flex items-center justify-between">
-                  <span className="mono-label text-secondaryText/40">PDF</span>
-                  <span className="mono-label text-crtGreen/60">READY</span>
+                {/* Bottom badge */}
+                <div className="pt-2 border-t border-borderNavy/60 flex items-center justify-between text-[10px] text-secondaryText/70">
+                  <span>PDF Document</span>
+                  <span className="text-highlightBlue font-semibold">Print Ready</span>
                 </div>
               </div>
 
-              <p className="mt-3 mono-label text-secondaryText/30">{t.resume.fileInfo}</p>
+              {/* Format info subtitle */}
+              <p className="mt-3 text-[11px] text-secondaryText/60 font-medium">
+                {t.resume.fileInfo}
+              </p>
             </div>
           </div>
 
-          {/* Update guide */}
-          <div className="mt-8 pt-6 border-t border-borderNavy/60 flex items-start gap-3 text-xs text-secondaryText">
-            <FolderDown className="w-4 h-4 text-electricBlue shrink-0 mt-0.5" />
+          {/* Replacement instructions box */}
+          <div className="mt-8 pt-6 border-t border-borderNavy/60 flex items-start gap-3 text-xs text-secondaryText bg-navyBlue/60 p-4 rounded-xl">
+            <FolderDown className="w-4 h-4 text-highlightBlue shrink-0 mt-0.5" />
             <div>
-              <span className="font-bold text-warmWhite block mb-0.5">{t.resume.updateGuideTitle}</span>
-              <p className="leading-relaxed">{t.resume.updateGuideText}</p>
+              <span className="font-bold text-white block mb-0.5">
+                {t.resume.updateGuideTitle}
+              </span>
+              <p className="leading-relaxed">
+                {t.resume.updateGuideText}
+              </p>
             </div>
           </div>
-        </div>
+        </CardSpotlight>
       </div>
     </section>
   );
