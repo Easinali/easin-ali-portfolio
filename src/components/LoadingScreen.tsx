@@ -13,9 +13,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // 10 Seconds total duration: 100 increments with 100ms interval = 10,000ms
-    const totalDurationMs = 10000;
-    const intervalMs = 100;
+    // 5 Seconds total duration: 100 increments with 50ms interval = 5,000ms
+    const totalDurationMs = 5000;
+    const intervalMs = 50;
     const totalSteps = totalDurationMs / intervalMs; // 100 steps
     let currentStep = 0;
 
@@ -52,7 +52,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-radial-gradient text-white select-none transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-custom-gradient text-white select-none transition-all duration-700 ease-out ${
         isFadingOut ? 'opacity-0 pointer-events-none scale-105' : 'opacity-100'
       }`}
       aria-label="Loading portfolio"
