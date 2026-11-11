@@ -208,7 +208,7 @@ html.dark .theme-panel {
 
 /* 4. Flip Effect: 3D X-axis Card Flip */
 .transition-flip {
-  transform: perspective(1200px) rotateX(35deg) translateY(90px);
+  transform: perspective(1200px) rotateX(5deg) translateY(90px);
   filter: blur(6px);
 }
 .transition-flip.is-visible {
