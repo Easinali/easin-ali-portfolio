@@ -175,7 +175,7 @@ html.dark .theme-panel {
 
 /* 1. Comb Effect: Slides in with a slicing horizontal & vertical stagger */
 .transition-comb {
-  transform: translateY(120px) translateX(-40px) skewX(-3deg);
+  transform: translateY(120px) translateX(-40px) skewX(-10deg);
   filter: blur(8px);
 }
 .transition-comb.is-visible {
@@ -186,7 +186,7 @@ html.dark .theme-panel {
 
 /* 2. Vortex Effect: Swirls & rotates with scale */
 .transition-vortex {
-  transform: translateY(120px) rotate(-6deg) scale(0.85);
+  transform: translateY(120px) rotate(-10deg) scale(0.85);
   filter: blur(10px);
 }
 .transition-vortex.is-visible {
@@ -219,7 +219,7 @@ html.dark .theme-panel {
 
 /* 5. Gallery Effect: Smooth cinematic Zoom & Curtain reveal */
 .transition-gallery {
-  transform: scale(0.9) translateY(110px);
+  transform: scale(2) translateY(110px);
   filter: blur(8px) brightness(0.7);
 }
 .transition-gallery.is-visible {
@@ -230,7 +230,7 @@ html.dark .theme-panel {
 
 /* Hero Section Entrance */
 .transition-hero {
-  transform: translateY(60px) scale(0.96);
+  transform: translateY(60px) scale(2);
   filter: blur(4px);
 }
 .transition-hero.is-visible {
