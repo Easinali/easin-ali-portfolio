@@ -1,8 +1,9 @@
 export type ProjectCategoryFilter = 'all' | 'excel-mis' | 'inventory' | 'supply-chain' | 'data-analysis';
+export type ProjectType = 'professional' | 'personal' | 'demonstration';
 
 export interface ProjectItem {
   id: string;
-  type: 'workplace' | 'simulation';
+  type: ProjectType;
   categoryFilter: 'excel-mis' | 'inventory' | 'supply-chain' | 'data-analysis';
   categoryLabel: string;
   categoryLabelBn: string;
@@ -39,7 +40,7 @@ export interface ProjectItem {
 export const projectsData: ProjectItem[] = [
   {
     id: "sales-deposit-reconciliation",
-    type: "workplace",
+    type: "professional",
     categoryFilter: "excel-mis",
     categoryLabel: "Excel & MIS • Reconciliation",
     categoryLabelBn: "এক্সেল ও এমআইএস • রিকনসিলিয়েশন",
@@ -49,8 +50,8 @@ export const projectsData: ProjectItem[] = [
     shortDescriptionBn: "মাল্টি-আউটলেট বিক্রয় রসিদের সাথে ব্যাংক স্টেটমেন্টের শতভাগ নির্ভুল মিল নিশ্চিতে একটি অপরিহার্য আর্থিক রিকনসিলিয়েশন ওয়ার্কফ্লো।",
     tools: ["Microsoft Excel", "ERP System", "Bank Portals", "VLOOKUP / XLOOKUP", "Conditional Formatting"],
     image: "/images/projects/project-reconciliation.svg",
-    badgeText: "Workplace Operational Project",
-    badgeTextBn: "কর্মক্ষেত্রের অপারেশনাল প্রজেক্ট",
+    badgeText: "Professional Workplace Project",
+    badgeTextBn: "পেশাদার কর্মক্ষেত্রের প্রজেক্ট",
     hasLivePreview: true,
     livePreviewType: "reconciliation",
     details: {
@@ -93,14 +94,14 @@ export const projectsData: ProjectItem[] = [
         "সেন্ট্রাল ফিন্যান্স টিমের জন্য এক ক্লিকে মাসিক কনসোলিডেশন রিপোর্ট।"
       ],
       results: [
-        "100% variance resolution achieved on a daily basis across all monitored outlets.",
-        "Cut monthly bank reconciliation turnaround time from 4 days to same-day verification.",
-        "Audit readiness improved with an instant verifiable archive of deposit slips and ERP batch vouchers."
+        "Standardized daily cross-checking between POS totals and bank credit advice.",
+        "Ensured consistent zero-variance financial tracking across active outlets.",
+        "Maintained an audit-compliant digital log linking deposit slips to ERP batch vouchers."
       ],
       resultsBn: [
-        "তদারকিকৃত সকল আউটলেটে প্রতিদিন শতভাগ রিকনসিলিয়েশন ও শূন্য গরমিল নিশ্চিতকরণ।",
-        "মাসিক ব্যাংক রিকনসিলিয়েশনের সময় ৪ দিন থেকে কমিয়ে একই দিনে সম্পন্ন করার সক্ষমতা অর্জন।",
-        "ডিপোজিট স্লিপ ও ইআরপি ভাউচারের তাৎক্ষণিক আর্কাইভের মাধ্যমে অডিট প্রস্তুতি সুগম হয়েছে।"
+        "পিওএস রেজিস্টার এবং ব্যাংক ক্রেডিট অ্যাডভাইসের মধ্যে দৈনিক ক্রস-চেকিং প্রক্রিয়া নিশ্চিতকরণ।",
+        "সকল সক্রিয় আউটলেটে আর্থিক হিসাবে গরমিল দূর করে জিরো-ভ্যারিয়্যান্স ট্র্যাকিং রক্ষা।",
+        "ব্যাংক ডিপোজিট স্লিপ ও ইআরপি ব্যাচ ভাউচারের মধ্যে অডিট-অনুমোদিত ডিজিটাল অডিট ট্রেইল সংরক্ষণ।"
       ],
       excelTechniques: ["SUMIFS", "XLOOKUP", "Conditional Formatting", "Data Validation", "IFERROR"],
       excelTechniquesBn: ["SUMIFS", "XLOOKUP", "কন্ডিশনাল ফরম্যাটিং", "ডাটা ভ্যালিডেশন", "IFERROR"],
@@ -110,7 +111,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "inventory-tracking-analysis",
-    type: "workplace",
+    type: "demonstration",
     categoryFilter: "inventory",
     categoryLabel: "Inventory Management",
     categoryLabelBn: "ইনভেন্টরি ম্যানেজমেন্ট",
@@ -120,8 +121,8 @@ export const projectsData: ProjectItem[] = [
     shortDescriptionBn: "ডিপো ট্রান্সফার, স্টক এজিং, সেফটি স্টক সীমা এবং রিক্যুইজিশন পয়েন্ট পর্যবেক্ষণে সমন্বিত ইনভেন্টরি ট্র্যাকিং মডেল।",
     tools: ["Microsoft Excel", "ERP Module", "Pivot Tables", "INDEX-MATCH", "Stock Formulas"],
     image: "/images/projects/project-inventory.svg",
-    badgeText: "Workplace Operational Project",
-    badgeTextBn: "কর্মক্ষেত্রের অপারেশনাল প্রজেক্ট",
+    badgeText: "Demonstration Project • Supply Chain",
+    badgeTextBn: "ডেমোনস্ট্রেশন প্রজেক্ট • সাপ্লাই চেইন",
     hasLivePreview: true,
     livePreviewType: "inventory",
     details: {
@@ -164,14 +165,14 @@ export const projectsData: ProjectItem[] = [
         "অপারেশনস হেডদের জন্য প্রস্তুতকৃত সাপ্তাহিক এক্সিকিউটিভ ইনভেন্টরি সামারি।"
       ],
       results: [
-        "Significantly curtailed stockouts on critical commercial lines.",
-        "Dead and slow-moving stock reduced to under 1.8% of total inventory valuation.",
-        "Strengthened coordination between central warehousing custodians and commercial teams."
+        "Modeled automated tracking of SKU shelf life and stock aging buckets (>60 days).",
+        "Structured demonstrative framework for monitoring slow-moving items and safety stock thresholds.",
+        "Demonstration case study; illustrates inventory management methodologies without proprietary corporate data."
       ],
       resultsBn: [
-        "গুরুত্বপূর্ণ কমার্শিয়াল প্রোডাক্ট লাইনে স্টকআউট শূন্যের কোঠায় নামিয়ে আনা হয়েছে।",
-        "ধীরগতির এবং অচল স্টকের হার মোট ইনভেন্টরি মূল্যের ১.৮% এর নিচে নামিয়ে আনা সম্ভব হয়েছে।",
-        "সেন্ট্রাল ওয়্যারহাউস ও কমার্শিয়াল টিমের মধ্যকার তথ্য আদান-প্রদান আরও গতিশীল হয়েছে।"
+        "টেস্ট মডেলে এসকেইউ (SKU) স্টক এবং ৬০ দিনের বেশি পুরনো পণ্যের এজিং স্বয়ংক্রিয়ভাবে চিহ্নিতকরণ প্রদর্শিত।",
+        "অতিরিক্ত ইনভেন্টরি ব্যয় বৃদ্ধির আগেই অনড় স্টক শনাক্তকরণ ও সেফটি স্টক মনিটরিংয়ের ফ্রেমওয়ার্ক।",
+        "এটি একটি ডেমোনস্ট্রেশন মডেল; কোনো গোপন প্রাতিষ্ঠানিক অভ্যন্তরীণ ডাটা ব্যতীত উপস্থাপিত।"
       ],
       excelTechniques: ["INDEX-MATCH", "Pivot Tables", "Dynamic Ranges", "Date & Aging Functions", "COUNTIFS"],
       excelTechniquesBn: ["INDEX-MATCH", "পিভট টেবিল", "ডাইনামিক রেঞ্জ", "ডেট ও এজিং ফাংশন", "COUNTIFS"],
@@ -181,7 +182,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "mis-reporting-dashboard",
-    type: "simulation",
+    type: "personal",
     categoryFilter: "excel-mis",
     categoryLabel: "Excel & MIS Reporting",
     categoryLabelBn: "এক্সেল ও এমআইএস রিপোর্টিং",
@@ -191,12 +192,12 @@ export const projectsData: ProjectItem[] = [
     shortDescriptionBn: "বিক্রয়, রাজস্ব, অপারেশনাল লক্ষ্যমাত্রা ও দলগত পারফরম্যান্স একত্রিত করে তৈরি একটি ইন্টারেক্টিভ এক্সিকিউটিভ ককপিট।",
     tools: ["Microsoft Excel", "Pivot Charts", "Interactive Slicers", "Advanced Data Validation", "KPI Modeling"],
     image: "/images/projects/project-mis-dashboard.svg",
-    badgeText: "Analytical Simulation / Showcase Case Study",
-    badgeTextBn: "অ্যানালিটিক্যাল সিমুলেশন / শোকেস কেস স্টাডি",
+    badgeText: "Personal Analytics Project",
+    badgeTextBn: "ব্যক্তিগত অ্যানালিটিক্স প্রজেক্ট",
     hasLivePreview: true,
     livePreviewType: "dashboard",
     details: {
-      overview: "A specialized project demonstrating advanced Management Information System (MIS) capabilities using Microsoft Excel as an agile business intelligence cockpit.",
+      overview: "A specialized personal project demonstrating advanced Management Information System (MIS) capabilities using Microsoft Excel as an agile business intelligence cockpit.",
       overviewBn: "মাইক্রোসফট এক্সেলকে একটি শক্তিশালী বিজনেস ইন্টেলিজেন্স ইঞ্জিন হিসেবে ব্যবহারের সক্ষমতা প্রমাণের জন্য প্রস্তুতকৃত একটি বিশেষায়িত এমআইএস মডেল।",
       problemStatement: "Corporate decision-makers were constrained by static, 40-page monthly PDF tables that lacked single-click regional slicing, variance summaries, or visual trends.",
       problemStatementBn: "ঊর্ধ্বতন কর্মকর্তারা বিশালাকার স্ট্যাটিক টেবিল রিপোর্ট বুঝতে গিয়ে সময় হারাতেন, যেখানে এক ক্লিকে অঞ্চলভিত্তিক ফিল্টারিং বা ভিজ্যুয়াল গ্রাফ ছিল না।",
@@ -235,14 +236,14 @@ export const projectsData: ProjectItem[] = [
         "ভুলবশত ফর্মুলা মুছে যাওয়া রোধে সুরক্ষিত লেআউট আর্কিটেকচার।"
       ],
       results: [
-        "Estimated 65% reduction in executive reporting compilation time.",
-        "Single-click visibility into key operational bottlenecks and top-performing retail outlets.",
-        "Served as an operational template for regular corporate reporting workflows."
+        "Showcases dynamic multi-period aggregation through pivot slicers and Excel data models.",
+        "Enables one-click visual filtering by region and quarter for management reporting.",
+        "Personal portfolio showcase illustrating dashboard design and MIS reporting architecture."
       ],
       resultsBn: [
-        "এক্সিকিউটিভ ব্রিফিং তৈরিতে সময় প্রায় ৬৫% হ্রাস করা সম্ভব হয়েছে।",
-        "এক ক্লিকে সেরা পারফর্মার আউটলেট ও দুর্বল ক্ষেত্রগুলো তাৎক্ষণিক দেখার পূর্ণ সুবিধা।",
-        "নিয়মিত কর্পোরেট রিপোর্টিংয়ে একটি স্ট্যান্ডার্ড টেমপ্লেট হিসেবে ব্যবহারের উপযোগী।"
+        "পিভট স্লাইসার ও এক্সেল ডাটা মডেলের মাধ্যমে বহুমাত্রিক সেলস ডাটার ডাইনামিক বিশ্লেষণ প্রদর্শিত।",
+        "এক ক্লিকে রিজিয়ন ও কোয়ার্টার অনুযায়ী ভিজ্যুয়াল ফিল্টারিংয়ের আধুনিক আর্কিটেকচার।",
+        "ব্যক্তিগত অ্যানালিটিক্যাল প্রজেক্ট হিসেবে নির্মিত, যা এক্সেল ড্যাশবোর্ড ও রিপোর্টিং দক্ষতার প্রতিফলন।"
       ],
       excelTechniques: ["Pivot Charts & Slicers", "XLOOKUP", "SUMIFS", "Dynamic Array Formulas", "Clean UI Design"],
       excelTechniquesBn: ["পিভট চার্ট ও স্লাইসার", "XLOOKUP", "SUMIFS", "ডাইনামিক অ্যারে ফর্মুলা", "ইউজার-ফ্রেন্ডলি ডিজাইন"],
@@ -252,7 +253,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "supply-chain-logistics-analysis",
-    type: "simulation",
+    type: "demonstration",
     categoryFilter: "supply-chain",
     categoryLabel: "Supply Chain & Logistics",
     categoryLabelBn: "সাপ্লাই চেইন ও লজিস্টিকস",
@@ -262,8 +263,8 @@ export const projectsData: ProjectItem[] = [
     shortDescriptionBn: "পণ্য পরিবহন রুট, ডেলিভারি লিড টাইম, ডিপো ক্যাপাসিটি এবং শতভাগ সময়মতো ডেলিভারি (OTIF) বিশ্লেষণকারী লজিস্টিকস মডেল।",
     tools: ["Logistics Modeling", "Excel Solver", "Distribution Routing", "Lead Time Analytics", "SCM Metrics"],
     image: "/images/projects/project-supply-chain.svg",
-    badgeText: "Analytical Simulation / PGD-SCM Case Study",
-    badgeTextBn: "অ্যানালিটিক্যাল সিমুলেশন / পিজিডি-এসসিএম কেস স্টাডি",
+    badgeText: "Demonstration Simulation Project",
+    badgeTextBn: "সিমুলেশন ও ডেমোনস্ট্রেশন প্রজেক্ট",
     hasLivePreview: true,
     livePreviewType: "logistics",
     details: {
@@ -306,14 +307,14 @@ export const projectsData: ProjectItem[] = [
         "সামগ্রিক OTIF পারফরম্যান্স স্কোরকার্ড।"
       ],
       results: [
-        "Simulated an 18% improvement in average vehicle turnaround time.",
-        "Demonstrated a verified path to achieving 97.8% On-Time In-Full fulfillment across regional hubs.",
-        "Bridged classroom supply chain principles with practical operational realities."
+        "Modeled transportation lead times and transit benchmarks across regional routing hubs.",
+        "Demonstrates simulated bottleneck detection when vehicle transit exceeds benchmark thresholds.",
+        "Academic case study developed during SCM coursework; simulated routing model."
       ],
       resultsBn: [
-        "গাড়ির টার্নঅ্যারাউন্ড সময়ে প্রায় ১৮% উন্নতির মডেলিং প্রদর্শন।",
-        "প্রধান রিটেইল পয়েন্টসমূহে ৯৭.৮% অন-টাইম ডেলিভারি অর্জনের বাস্তব রোডম্যাপ তৈরি।",
-        "ক্লাসরুমের থিওরিটিক্যাল সাপ্লাই চেইন ধারণার সাথে বাস্তব শিল্পক্ষেত্রের সরাসরি সংযোগ স্থাপন।"
+        "নর্থ ও সাউথ রুট হাবের ট্রানজিট সময় এবং পরিবহন বেঞ্চমার্কের সিমুলেশন বিশ্লেষণ।",
+        "নির্ধারিত সময়ের চেয়ে বেশি সময় লাগা ডেসপ্যাচ বটলনেক শনাক্তকরণের মডেলিং।",
+        "এসসিএম উচ্চশিক্ষা চলাকালীন তৈরি একাডেমিক কেস স্টাডি; সম্পূর্ণ সিমুলেটেড রুট মডেল।"
       ],
       excelTechniques: ["Linear Optimization Formulas", "Lead Time Distribution", "Capacity Constraints", "Variance Tables"],
       excelTechniquesBn: ["লিনিয়ার অপ্টিমাইজেশন ফর্মুলা", "লিড টাইম ডিস্ট্রিবিউশন", "ক্যাপাসিটি বিশ্লেষণ", "ভ্যারিয়্যান্স টেবিল"],
@@ -323,7 +324,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "data-management-system",
-    type: "workplace",
+    type: "professional",
     categoryFilter: "data-analysis",
     categoryLabel: "Data Analysis & Governance",
     categoryLabelBn: "ডাটা অ্যানালাইসিস ও গভর্নেন্স",
@@ -333,8 +334,8 @@ export const projectsData: ProjectItem[] = [
     shortDescriptionBn: "কঠোর ডাটা ভ্যালিডেশন, শতভাগ ডুপ্লিকেট রোধ এবং রিলেশনাল লুকআপ টেবিল সমন্বিত অপারেশনাল রেকর্ড কিপিং সিস্টেম।",
     tools: ["Microsoft Excel", "Data Validation", "Nested Formulas", "Conditional Formatting", "Audit Trails"],
     image: "/images/projects/project-data-management.svg",
-    badgeText: "Workplace & Systems Project",
-    badgeTextBn: "কর্মক্ষেত্র ও সিস্টেম প্রজেক্ট",
+    badgeText: "Professional Workplace Project",
+    badgeTextBn: "পেশাদার কর্মক্ষেত্রের প্রজেক্ট",
     hasLivePreview: true,
     livePreviewType: "records",
     details: {
@@ -377,14 +378,14 @@ export const projectsData: ProjectItem[] = [
         "প্রতিটি এন্ট্রির জন্য স্বয়ংক্রিয় টাইমস্ট্যাম্প ও অডিট ট্রেইল।"
       ],
       results: [
-        "Virtually eliminated entry typos (achieved 99.98% clean record rate).",
-        "Reduced manual data cleaning time prior to monthly MIS consolidation by over 80%.",
-        "Created an audit-proof paperless trail readily available for management inspection."
+        "Enforced duplicate-trapping validation rules for operational batch codes before posting.",
+        "Maintained organized master record logs for transaction traceability and internal audit.",
+        "Standardized documentation format across operational desks and depot logs."
       ],
       resultsBn: [
-        "টাইপো ও ভুল ক্যাটাগরি নির্বাচনের সমস্যা দূর হয়ে ৯৯.৯৮% এন্ট্রি শুদ্ধতা নিশ্চিত হয়েছে।",
-        "মাসিক কনসোলিডেশনের পূর্বে ডাটা ক্লিনিংয়ের পেছনে নষ্ট হওয়া সময়ের ৮০% সাশ্রয়।",
-        "ম্যানেজমেন্ট ও অডিট টিমের জন্য তাৎক্ষণিক যাচাইযোগ্য সুশৃঙ্খল ডিজিটাল ট্রেইল তৈরি হয়েছে।"
+        "পোস্টিংয়ের আগেই ব্যাচ ভাউচার কোডের স্বয়ংক্রিয় ডুপ্লিকেট ট্র্যাপিং রুল প্রয়োগ।",
+        "অভ্যন্তরীণ অডিট ও ট্রানজ্যাকশন ট্র্যাকিংয়ের জন্য সুবিন্যস্ত মাস্টার রেকর্ড সংরক্ষণ।",
+        "অপারেশনাল ডেস্ক ও ডিপো লগের জন্য মানসম্মত ডকুমেন্টেশন কাঠামো বাস্তবায়ন।"
       ],
       excelTechniques: ["Data Validation Rules", "Dynamic Dropdowns (INDIRECT / OFFSET)", "Conditional Rules", "Sheet Protection"],
       excelTechniquesBn: ["ডাটা ভ্যালিডেশন রুলস", "ডাইনামিক ড্রপডাউন", "কন্ডিশনাল রুলস", "শিট প্রটেকশন ও নিরাপত্তা"],

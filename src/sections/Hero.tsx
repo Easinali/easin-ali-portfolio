@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { profileData } from '../data/profileData';
-import { FileDown, ArrowRight, Mail, Linkedin, Sparkles, Building2, HelpCircle, X, Copy, Check, TrendingUp, ShieldCheck, Database, Award } from 'lucide-react';
-import { CardSpotlight } from '../components/CardSpotlight';
+import { FileDown, ArrowRight, Mail, Linkedin, Sparkles, HelpCircle, X, Copy, Check, TrendingUp, ShieldCheck, Database, Award } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { t, language } = useLanguage();
   const [photoError, setPhotoError] = useState(false);
   const [showPhotoHelp, setShowPhotoHelp] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  const isBn = language === 'bn';
+
+  useEffect(() => {
+    // Trigger entrance animations after mount
+    const t = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(profileData.email);
@@ -16,278 +24,318 @@ export const Hero: React.FC = () => {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const isBn = language === 'bn';
-
   return (
-    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-      {/* Subtle Blue Accent Lighting */}
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden section-editorial-grid"
+      style={{ paddingTop: '100px', paddingBottom: '80px' }}
+    >
+      {/* Background editorial grid is from CSS utility class */}
+
+      {/* Blue ambient backglow — large, soft */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] rounded-full blur-[140px] pointer-events-none opacity-40 bg-gradient-to-tr from-electricBlue/20 via-highlightBlue/15 to-transparent"
+        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full blur-[180px] pointer-events-none opacity-20"
+        style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline, Bio & CTAs (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Corporate Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-navyBlue/90 border border-borderNavy shadow-sm backdrop-blur-md">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <Building2 className="w-3.5 h-3.5 text-highlightBlue" />
-              <span className="text-xs font-semibold text-slate-200">
-                {t.hero.companyBadge}
-              </span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+
+        {/* ── Top bar: status badge + section number ── */}
+        <div
+          className={`flex items-center justify-between mb-12 transition-all duration-700 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          style={{ transitionDelay: '100ms' }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="mono-label text-secondaryText/50">00</span>
+            <span className="w-8 h-px bg-borderNavy" />
+            <span className="mono-label text-secondaryText/50">INTRODUCTION</span>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 border border-borderNavy">
+            <span className="w-1.5 h-1.5 rounded-full bg-crtGreen animate-blink" />
+            <span className="mono-label text-crtGreen/80">{t.hero.companyBadge}</span>
+          </div>
+        </div>
+
+        {/* ── Main content grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
+
+          {/* Left: Text (7 cols) */}
+          <div className="lg:col-span-7 space-y-8">
+
+            {/* Greeting */}
+            <p
+              className={`mono-label text-electricBlue transition-all duration-700 ${
+                mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              }`}
+              style={{ transitionDelay: '200ms' }}
+            >
+              {t.hero.greeting}
+            </p>
+
+            {/* Oversized editorial name */}
+            <div
+              className={`transition-all duration-900 ${
+                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: '300ms' }}
+            >
+              <h1
+                className="font-black text-warmWhite leading-none tracking-tight"
+                style={{ fontSize: 'clamp(3rem, 9vw, 7.5rem)', letterSpacing: '-0.04em' }}
+              >
+                {isBn ? profileData.nameBn : profileData.name}
+              </h1>
             </div>
 
-            {/* Greeting & Main Headline */}
-            <div className="space-y-2">
-              <p className="text-sm md:text-base font-semibold text-highlightBlue tracking-wider uppercase">
-                {t.hero.greeting}
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                {language === 'bn' ? profileData.nameBn : profileData.name}
-              </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-200 tracking-tight">
-                {t.hero.role}
-              </h2>
-              <p className="text-sm sm:text-base text-highlightBlue font-semibold">
+            {/* Role headline — editorial blue */}
+            <div
+              className={`space-y-1 transition-all duration-700 ${
+                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: '450ms' }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-px bg-electricBlue" />
+                <h2 className="text-electricBlue font-mono text-sm sm:text-base font-semibold tracking-wider uppercase">
+                  {t.hero.role}
+                </h2>
+              </div>
+              <p className="text-secondaryText text-sm font-medium pl-11">
                 {t.hero.subRole}
               </p>
             </div>
 
-            {/* Supporting Text */}
-            <p className="text-base sm:text-lg text-secondaryText leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            {/* Supporting text */}
+            <p
+              className={`text-secondaryText text-base leading-relaxed max-w-xl transition-all duration-700 ${
+                mounted ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ transitionDelay: '550ms' }}
+            >
               {t.hero.supportingText}
             </p>
 
-            {/* CTAs with Premium Hover & Shimmer Interactions */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            {/* CTAs */}
+            <div
+              className={`flex flex-col sm:flex-row items-start gap-4 transition-all duration-700 ${
+                mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{ transitionDelay: '650ms' }}
+            >
               <a
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-sm shadow-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 group relative overflow-hidden"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-electricBlue text-darkNavy font-bold text-sm font-mono tracking-wide uppercase hover:bg-highlightBlue transition-colors duration-200 group relative overflow-hidden"
+                data-magnetic
               >
-                {/* Subtle Shimmer highlight on hover */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none"
-                />
-                <span>{t.hero.exploreProjects}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                <span className="relative z-10">{t.hero.exploreProjects}</span>
+                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
               </a>
 
               <a
                 href={profileData.resumePdfPath}
-                download="Easin_Ali_Resume_CV.pdf"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navyBlue hover:bg-slate-800 text-white border border-borderNavy hover:border-electricBlue/60 font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-sm"
+                download="Easin_Ali_CV.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-borderNavy text-warmWhite font-mono text-sm tracking-wide uppercase hover:border-electricBlue/60 hover:text-electricBlue transition-all duration-200 group"
+                data-magnetic
               >
-                <FileDown className="w-4 h-4 text-highlightBlue" />
+                <FileDown className="w-4 h-4" />
                 <span>{t.hero.downloadCv}</span>
               </a>
             </div>
 
-            {/* Direct Connect & Copy Email */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-              <span className="text-xs font-semibold text-secondaryText/70 uppercase tracking-wider">
-                {t.hero.connectPrompt}
-              </span>
+            {/* Contact row */}
+            <div
+              className={`flex flex-wrap items-center gap-3 transition-all duration-700 ${
+                mounted ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ transitionDelay: '750ms' }}
+            >
+              <span className="mono-label text-secondaryText/50">{t.hero.connectPrompt}</span>
 
               <a
                 href={profileData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="LinkedIn Profile"
-                title="LinkedIn"
+                className="w-9 h-9 border border-borderNavy flex items-center justify-center text-secondaryText hover:text-warmWhite hover:border-electricBlue/60 transition-all duration-200"
+                aria-label="LinkedIn"
+                data-magnetic
               >
                 <Linkedin className="w-4 h-4" />
               </a>
 
               <a
                 href={`mailto:${profileData.email}`}
-                className="p-2.5 rounded-xl bg-navyBlue border border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue hover:bg-blue-900/30 transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="Send Email"
-                title="Email"
+                className="w-9 h-9 border border-borderNavy flex items-center justify-center text-secondaryText hover:text-warmWhite hover:border-electricBlue/60 transition-all duration-200"
+                aria-label="Email"
+                data-magnetic
               >
                 <Mail className="w-4 h-4" />
               </a>
 
-              {/* One-Click Copy Email button with tooltip */}
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-200 ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 border font-mono text-xs transition-all duration-200 ${
                   copiedEmail
-                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                    : 'bg-navyBlue border-borderNavy text-secondaryText hover:text-white hover:border-electricBlue/60'
+                    ? 'border-crtGreen/40 text-crtGreen/80'
+                    : 'border-borderNavy text-secondaryText hover:border-electricBlue/50 hover:text-warmWhite'
                 }`}
                 title={profileData.email}
               >
-                {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-highlightBlue" />}
+                {copiedEmail ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedEmail ? t.hero.copiedEmail : profileData.email}</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: Professional Round Portrait Frame (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="relative">
-              {/* Subtle ambient backglow ring */}
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-electricBlue/30 via-highlightBlue/20 to-transparent blur-xl pointer-events-none" />
+          {/* Right: Portrait (5 cols) */}
+          <div
+            className={`lg:col-span-5 flex flex-col items-center transition-all duration-900 ${
+              mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}
+            style={{ transitionDelay: '400ms' }}
+          >
+            <div className="relative portrait-editorial-frame">
+              {/* Outer decorative frame */}
+              <div className="absolute -inset-3 border border-electricBlue/15" />
+              <div className="absolute -inset-6 border border-electricBlue/08" />
 
-              <CardSpotlight
-                maxTilt={3}
-                enableTilt={true}
-                className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-electricBlue via-highlightBlue/50 to-navyBlue shadow-[0_0_40px_rgba(59,130,246,0.35)]"
-              >
-                {/* Inner circular image container */}
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-navyBlue border-2 border-darkNavy flex items-center justify-center group">
-                  <img
-                    src={photoError ? profileData.portraitFallback : profileData.portraitPath}
-                    onError={() => setPhotoError(true)}
-                    alt="Easin Ali Professional Portrait"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 rounded-full"
-                  />
-                </div>
-              </CardSpotlight>
+              {/* Corner labels (editorial style) */}
+              <span className="absolute -top-5 left-0 mono-label text-secondaryText/40">PORTRAIT</span>
+              <span className="absolute -bottom-5 right-0 mono-label text-secondaryText/40">2026</span>
 
-              {/* Decorative accent spark icon */}
-              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 w-9 h-9 rounded-full bg-darkNavy/90 border border-electricBlue flex items-center justify-center text-highlightBlue shadow-glow z-20">
-                <Sparkles className="w-4 h-4" />
+              {/* Portrait image */}
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 overflow-hidden rounded-full">
+                {/* Blue glow ring */}
+                <div className="absolute inset-0 rounded-full border border-electricBlue/30 z-10 pointer-events-none" />
+                <div
+                  className="absolute inset-0 rounded-full pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.1) 0%, transparent 50%)' }}
+                />
+                <img
+                  src={photoError ? profileData.portraitFallback : profileData.portraitPath}
+                  onError={() => setPhotoError(true)}
+                  alt="Easin Ali Professional Portrait"
+                  className="w-full h-full object-cover object-top rounded-full"
+                />
               </div>
 
-              {/* Bottom floating badge with verified corporate beacon */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-darkNavy/95 backdrop-blur-md border border-electricBlue/40 shadow-xl flex items-center gap-2.5 z-20 whitespace-nowrap">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-bold text-white">
-                  {language === 'bn' ? profileData.nameBn : profileData.name}
+              {/* Floating name badge */}
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-darkNavy/95 border border-electricBlue/30 whitespace-nowrap backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-crtGreen animate-pulse" />
+                <span className="font-bold text-warmWhite text-xs">
+                  {isBn ? profileData.nameBn : profileData.name}
                 </span>
-                <span className="text-secondaryText/40">•</span>
-                <span className="text-[11px] text-highlightBlue font-semibold">
-                  Paragon Group
-                </span>
+                <span className="text-borderNavy mx-1">|</span>
+                <span className="mono-label text-electricBlue">Paragon Group</span>
+              </div>
+
+              {/* Top-right sparkle icon */}
+              <div className="absolute -top-3 -right-3 w-8 h-8 bg-darkNavy border border-electricBlue/40 flex items-center justify-center text-electricBlue z-20">
+                <Sparkles className="w-3.5 h-3.5" />
               </div>
             </div>
 
-            {/* Clickable Hint under portrait */}
+            {/* Photo help hint */}
             <button
               type="button"
               onClick={() => setShowPhotoHelp(true)}
-              className="mt-8 inline-flex items-center gap-1.5 text-xs text-secondaryText/80 hover:text-highlightBlue underline transition-colors"
+              className="mt-10 inline-flex items-center gap-1.5 mono-label text-secondaryText/40 hover:text-electricBlue transition-colors"
             >
-              <HelpCircle className="w-3.5 h-3.5 text-highlightBlue" />
+              <HelpCircle className="w-3.5 h-3.5" />
               <span>{t.hero.photoHint}</span>
             </button>
           </div>
         </div>
 
-        {/* Executive Highlights Ribbon */}
-        <div className="mt-16 pt-8 border-t border-borderNavy/50 grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-              <ShieldCheck className="w-4 h-4" />
+        {/* ── Executive highlights ribbon ── */}
+        <div
+          className={`mt-20 pt-8 border-t border-borderNavy/50 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-700 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          style={{ transitionDelay: '800ms' }}
+        >
+          {[
+            { icon: <ShieldCheck className="w-4 h-4" />, color: 'text-crtGreen', title: isBn ? 'সেলস রিকনসিলিয়েশন' : 'Sales Reconciliation', sub: isBn ? 'দৈনিক সেলস ও ব্যাংক অডিট' : 'Daily POS & Bank Audit' },
+            { icon: <Database className="w-4 h-4" />,    color: 'text-electricBlue', title: isBn ? 'ইনভেন্টরি ট্র্যাকিং' : 'Inventory Tracking',     sub: isBn ? 'ইআরপি মাল্টি-ডিপো' : 'ERP Multi-Depot Ops' },
+            { icon: <TrendingUp className="w-4 h-4" />,  color: 'text-highlightBlue', title: isBn ? 'এমআইএস ড্যাশবোর্ড' : 'Excel MIS Dashboards',   sub: isBn ? 'পিভট ও এক্সলুকআপ' : 'Advanced Pivot & XLOOKUP' },
+            { icon: <Award className="w-4 h-4" />,       color: 'text-secondaryText', title: isBn ? 'এমবিএ ও পিজিডি (SCM)' : 'MBA & PGD-SCM',          sub: isBn ? 'সাপ্লাই চেইনে উচ্চশিক্ষা' : 'Advanced Academic Track' },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="editorial-card corner-bracket p-4 flex items-center gap-3"
+              data-cursor="card"
+            >
+              <div className={`w-8 h-8 border border-borderNavy flex items-center justify-center ${item.color} shrink-0`}>
+                {item.icon}
+              </div>
+              <div>
+                <p className="text-xs font-bold text-warmWhite leading-tight">{item.title}</p>
+                <p className="text-[11px] text-secondaryText/60 mt-0.5">{item.sub}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">
-                {isBn ? '১০০% রিকনসিলিয়েশন' : '100% Reconciliation'}
-              </p>
-              <p className="text-[11px] text-secondaryText/70 mt-0.5">
-                {isBn ? 'দৈনিক সেলস ও ডিপোজিট' : 'Sales vs Bank Statement'}
-              </p>
-            </div>
-          </CardSpotlight>
+          ))}
+        </div>
 
-          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-electricBlue/10 border border-electricBlue/30 flex items-center justify-center text-highlightBlue shrink-0">
-              <Database className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">
-                {isBn ? 'ইনভেন্টরি ট্র্যাকিং' : 'Inventory Tracking'}
-              </p>
-              <p className="text-[11px] text-secondaryText/70 mt-0.5">
-                {isBn ? 'ইআরপি ভিত্তিক মাল্টি-ডিপো' : 'ERP Multi-Depot Operations'}
-              </p>
-            </div>
-          </CardSpotlight>
-
-          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
-              <TrendingUp className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">
-                {isBn ? 'এক্সেল এমআইএস ড্যাশবোর্ড' : 'Excel MIS Dashboards'}
-              </p>
-              <p className="text-[11px] text-secondaryText/70 mt-0.5">
-                {isBn ? 'উচ্চতর পিভট ও ফর্মুলা' : 'Advanced Pivot & XLOOKUP'}
-              </p>
-            </div>
-          </CardSpotlight>
-
-          <CardSpotlight maxTilt={2} className="p-4 rounded-xl bg-navyBlue/50 border border-borderNavy/60 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
-              <Award className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">
-                {isBn ? 'এমবিএ ও পিজিডি (SCM)' : 'MBA & PGD-SCM'}
-              </p>
-              <p className="text-[11px] text-secondaryText/70 mt-0.5">
-                {isBn ? 'সাপ্লাই চেইনে উচ্চশিক্ষা' : 'Advanced Academic Track'}
-              </p>
-            </div>
-          </CardSpotlight>
+        {/* ── Bottom status bar ── */}
+        <div
+          className={`mt-12 flex items-center gap-3 transition-all duration-700 ${
+            mounted ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ transitionDelay: '900ms' }}
+        >
+          <span className="mono-label text-crtGreen/50">STATUS</span>
+          <span className="w-4 h-px bg-borderNavy" />
+          <span className="mono-label text-secondaryText/50 cursor-blink">
+            AVAILABLE FOR OPPORTUNITIES
+          </span>
         </div>
       </div>
 
-      {/* Photo Replacement Instructions Modal */}
+      {/* Photo help modal */}
       {showPhotoHelp && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
           onClick={() => setShowPhotoHelp(false)}
         >
           <div
-            className="w-full max-w-md bg-navyBlue border border-borderNavy rounded-2xl p-6 shadow-2xl relative"
+            className="w-full max-w-md bg-navyBlue border border-borderNavy p-6 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setShowPhotoHelp(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-secondaryText hover:text-white hover:bg-slate-800"
-              aria-label="Close"
+              className="absolute top-4 right-4 text-secondaryText hover:text-warmWhite transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
-
-            <div className="flex items-center gap-2 mb-3 text-highlightBlue">
-              <Sparkles className="w-5 h-5" />
-              <h3 className="font-bold text-white text-base">
+            <div className="flex items-center gap-2 mb-3">
+              <Sparkles className="w-5 h-5 text-electricBlue" />
+              <h3 className="font-bold text-warmWhite">
                 {language === 'bn' ? 'নিজের ছবি যুক্ত করার নিয়ম' : 'How to Add Your Photo'}
               </h3>
             </div>
-
-            <div className="text-xs text-secondaryText space-y-3 leading-relaxed">
-              <p>
-                {language === 'bn'
-                  ? 'আপনার প্রকৃত মুখের পরিচয় সম্পূর্ণ সংরক্ষণ করতে আমরা কোনো এআই-জেনারেটেড কাল্পনিক ছবি যুক্ত করিনি।'
-                  : 'To preserve your actual facial identity and professional authenticity, we do not substitute your face with synthetic AI people.'}
-              </p>
-              <div className="p-3 rounded-lg bg-darkNavy border border-borderNavy text-slate-200 font-mono text-[11px]">
-                public/images/profile.jpg
-              </div>
-              <p>
-                {language === 'bn'
-                  ? 'আপনার প্রফেশনাল পোর্ট্রেট ফটোটির নাম "profile.jpg" দিয়ে উক্ত ফোল্ডারে রাখলেই এটি স্বয়ংক্রিয়ভাবে ওয়েবসাইটে প্রদর্শিত হবে।'
-                  : 'Simply save your professional portrait photo as "profile.jpg" into the public/images/ directory. It will immediately show up here automatically!'}
-              </p>
+            <p className="text-xs text-secondaryText leading-relaxed mb-3">
+              {language === 'bn'
+                ? 'আপনার প্রকৃত মুখের পরিচয় সম্পূর্ণ সংরক্ষণ করতে আমরা কোনো এআই-জেনারেটেড ছবি যুক্ত করিনি।'
+                : 'To preserve your actual facial identity, we do not substitute your photo with AI-generated imagery.'}
+            </p>
+            <div className="p-3 bg-darkNavy border border-borderNavy font-mono text-[11px] text-crtGreen/80 mb-3">
+              public/images/profile.jpg
             </div>
-
+            <p className="text-xs text-secondaryText leading-relaxed">
+              {language === 'bn'
+                ? '"profile.jpg" নামে ছবি রাখলে স্বয়ংক্রিয়ভাবে দেখা যাবে।'
+                : 'Save your portrait as "profile.jpg" in public/images/ — it will appear automatically.'}
+            </p>
             <button
               type="button"
               onClick={() => setShowPhotoHelp(false)}
-              className="mt-5 w-full py-2.5 rounded-xl bg-electricBlue hover:bg-blue-600 text-white font-semibold text-xs transition-colors"
+              className="mt-5 w-full py-2.5 bg-electricBlue hover:bg-highlightBlue text-darkNavy font-mono text-xs tracking-widest uppercase transition-colors"
             >
-              {language === 'bn' ? 'বুঝেছি' : 'Got it'}
+              {language === 'bn' ? 'বুঝেছি' : 'GOT IT'}
             </button>
           </div>
         </div>
